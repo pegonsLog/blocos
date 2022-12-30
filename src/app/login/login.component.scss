@@ -1,0 +1,22 @@
+mat-card {
+  width: 40%;
+  margin: 10em auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}
+
+mat-card-actions {
+  margin: auto;
+}
+
+mat-toolbar, button {
+  margin-bottom: 1em;
+  font-family: "Montserrat";
+}

@@ -5,6 +5,7 @@ export interface Bloco {
   id: number;
   name: string;
   region: string;
+  date: string;
   linkDOT: string;
   linkMyMaps: string;
 }

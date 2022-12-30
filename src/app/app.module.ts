@@ -5,9 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BlocosModule } from './blocos/components/components.module';
+import { BlocosModule } from './blocos/components/blocos.module';
 import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     AngularMaterialModule,
-    BlocosModule
+    BlocosModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent],
