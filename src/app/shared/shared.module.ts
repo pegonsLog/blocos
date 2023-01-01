@@ -4,16 +4,9 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { IconPipe } from './pipes/icon.pipe';
 
-
 @NgModule({
-  declarations: [
-    ErrorDialogComponent,
-    IconPipe
-  ],
-  imports: [
-    CommonModule,
-    AngularMaterialModule,
-  ],
-  exports: []
+  declarations: [ErrorDialogComponent, IconPipe],
+  imports: [CommonModule, AngularMaterialModule],
+  exports: [ErrorDialogComponent, IconPipe],
 })
-export class SharedModule { }
+export class SharedModule {}

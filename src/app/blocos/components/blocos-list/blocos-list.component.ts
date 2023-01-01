@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Blocos } from 'src/app/model/bloco';
+import { BlocosService } from '../blocos.service';
 
 @Component({
   selector: 'app-blocos-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlocosListComponent implements OnInit {
 
-  constructor() { }
+  blocos$: any = this.blocosService.list();
+
+  constructor(private blocosService: BlocosService) {
+   }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,0 +1,35 @@
+mat-card {
+  max-width: 40%;
+  margin: 2em auto;
+}
+
+mat-grid-tile {
+  background: lightblue;
+  display: flex;
+  align-items: left;
+  text-align: left;
+}
+.toolbar-month {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin: auto;
+
+}
+
+.title-size {
+  font-size: x-large;
+}
+
+.teste {
+  background: lightblue;
+  display: flex;
+  margin-bottom: 5px;
+  height: 40px;
+}

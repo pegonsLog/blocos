@@ -1,1 +1,14 @@
-<p>blocos-list works!</p>
+<mat-card class="mat-elevation-z8">
+  <mat-toolbar color="primary">Blocos</mat-toolbar>
+  <div class="toolbar-month">
+    <div *ngIf="blocos$">
+      <div *ngFor="let bloco of blocos$ | async as Blocos">
+        <div class="teste">
+          <a href="{{ bloco.link }}" target="_blank">
+            {{ bloco.name }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
