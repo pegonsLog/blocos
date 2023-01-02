@@ -3,9 +3,17 @@ export interface Blocos extends Array<Bloco>{}
 
 export interface Bloco {
   id: number;
-  name: string;
-  region: string;
-  date: string;
+  nome: string;
+  regional: string;
+  data: string;
+  publico: number;
+  horaConc: string;
+  horaDesf: string;
+  horaDisp: string;
+  responsavel: string;
+  telefone: string;
+  localConc: string;
+  localDisp: string;
   linkDOT: string;
   linkMyMaps: string;
 }

@@ -1,14 +1,8 @@
 mat-card {
-  max-width: 40%;
+  max-width: 30%;
   margin: 2em auto;
 }
 
-mat-grid-tile {
-  background: lightblue;
-  display: flex;
-  align-items: left;
-  text-align: left;
-}
 .toolbar-month {
   padding-top: 10px;
   padding-bottom: 5px;
@@ -17,19 +11,38 @@ mat-grid-tile {
 a {
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 15px;
   text-decoration: none;
   color: inherit;
-  margin: auto;
-
+  font-family: "Montserrat";
 }
 
 .title-size {
   font-size: x-large;
 }
 
-.teste {
+.link {
   background: lightblue;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 5px;
   height: 40px;
+  padding-right: 10px;
+  font-family: "Montserrat";
+}
+
+.filtro-blocos {
+  min-width: 150px;
+  width: 100%;
+}
+input {
+  margin-top: 10px;
+  display: flex;
+}
+mat-label {
+  color: #939393;
+}
+
+span{
+  color: teal;
 }

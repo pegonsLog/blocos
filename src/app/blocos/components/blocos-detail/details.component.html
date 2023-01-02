@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-toolbar color="primary">Detalhes do bloco</mat-toolbar>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">Nome do Bloco: </mat-list-item>
+      <mat-list-item role="listitem">Data do Desfile: </mat-list-item>
+      <mat-list-item role="listitem">Público: </mat-list-item>
+      <mat-list-item role="listitem">Hora da Concentração: </mat-list-item>
+      <mat-list-item role="listitem">Hora do Desfile: </mat-list-item>
+      <mat-list-item role="listitem">Hora de Dispersão: </mat-list-item>
+      <mat-list-item role="listitem">Local de Concentração: </mat-list-item>
+      <mat-list-item role="listitem">Local de Dispersão: </mat-list-item>
+      <mat-list-item role="listitem">Responsável: </mat-list-item>
+      <mat-list-item role="listitem">Telefone: </mat-list-item>
+
+    </mat-list>
+
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        class="montserrat"
+        color="primary"
+        (click)="onMyMaps()"
+      >
+        Abrir MyMaps
+      </button>
+      <button
+        mat-raised-button
+        class="montserrat"
+        color="primary"
+        (click)="onDot()"
+      >
+        Abrir DOT
+      </button>
+      <button mat-raised-button class="montserrat" (click)="onCancel()">
+        Voltar
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

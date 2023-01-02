@@ -18,8 +18,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     AngularMaterialModule,
-    LoginModule
-  ],
+    LoginModule],
   providers: [],
   bootstrap: [AppComponent],
 })
