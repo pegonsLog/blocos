@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -36,7 +36,7 @@ export class BlocosFormComponent {
     private route: ActivatedRoute,
     private location: Location
   ) {
-    const bloco: Bloco = this.route.snapshot.data['bloco'];
+    const bloco: Bloco = this.route.snapshot.data['add'];
 
     this.form.setValue({
       id: bloco.id,

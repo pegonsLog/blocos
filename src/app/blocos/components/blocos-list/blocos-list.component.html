@@ -1,34 +1,51 @@
 <mat-card class="mat-elevation-z8">
-  <mat-toolbar color="primary">Blocos</mat-toolbar>
-  <button mat-button color="primary" (click)="findOne()">FindOne</button>
-  <div class="toolbar-month">
-    <mat-form-field class="filtro-blocos">
-      <div>
-        <mat-label>Digite parte do nome do bloco</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-      </div>
-      <button
-        *ngIf="value"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="value = ''"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <div *ngIf="blocos$">
-      <div *ngFor="let bloco of blocos$ | async as Blocos">
-        <div class="link">
-          <a href="{{ bloco.link }}" target="_blank">
-            {{ bloco.name }}
-          </a>
+  <mat-toolbar color="primary"
+    >Blocos
+    <a style="font-size: 25px" routerLink="add">+</a>
+  </mat-toolbar>
+  <div class="toolbar-regionais">
+    <mat-grid-list cols="6" rowHeight="5:2">
+      <mat-grid-tile>
+        <button mat-button (click)="load()">GERAL</button>
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let regional of regionais">
+        <button mat-button (click)="forByRegional(regional)">
+          {{ regional }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div>
+    <span>
+      <mat-form-field class="filtro-blocos">
+        <div>
+          <mat-label>Digite parte do nome do bloco</mat-label>
+          <input matInput type="text" [(ngModel)]="value" />
+        </div>
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </span>
+  </div>
 
-          <div class="link">
-            <a href="" target="_blank">
-              <span class="material-symbols-outlined"> theater_comedy </span></a
-            >
-          </div>
+  <div *ngIf="blocos$">
+    <div *ngFor="let bloco of blocos$ | async as Blocos">
+      <div class="link">
+        <a href="{{ bloco.linkMyMaps }}" target="_blank">
+          {{ bloco.nome }}
+        </a>
+
+        <div class="link">
+          <button mat-button (click)="findOne(bloco.id)">
+            <span class="material-symbols-outlined"> theater_comedy </span>
+          </button>
         </div>
       </div>
     </div>

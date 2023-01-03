@@ -2,27 +2,48 @@
   <mat-toolbar color="primary">Detalhes do bloco</mat-toolbar>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem">Nome do Bloco: </mat-list-item>
-      <mat-list-item role="listitem">Data do Desfile: </mat-list-item>
-      <mat-list-item role="listitem">Público: </mat-list-item>
-      <mat-list-item role="listitem">Hora da Concentração: </mat-list-item>
-      <mat-list-item role="listitem">Hora do Desfile: </mat-list-item>
-      <mat-list-item role="listitem">Hora de Dispersão: </mat-list-item>
-      <mat-list-item role="listitem">Local de Concentração: </mat-list-item>
-      <mat-list-item role="listitem">Local de Dispersão: </mat-list-item>
-      <mat-list-item role="listitem">Responsável: </mat-list-item>
-      <mat-list-item role="listitem">Telefone: </mat-list-item>
-
-    </mat-list>
-
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        class="montserrat"
-        color="primary"
-        (click)="onMyMaps()"
+      <mat-list-item role="listitem"
+        ><strong> Nome do Bloco: &ensp;</strong> {{ bloco.nome }}</mat-list-item
       >
-        Abrir MyMaps
+      <mat-list-item role="listitem"
+        ><strong>Data do Desfile: &ensp;</strong>
+        {{ bloco.data }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Público: &ensp;</strong> {{ bloco.publico }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Hora da Concentração: &ensp;</strong>
+        {{ bloco.horaConc }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Hora do Desfile: &ensp;</strong>
+        {{ bloco.horaDesf }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Hora de Dispersão: &ensp;</strong>
+        {{ bloco.horaDisp }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Local de Concentração: &ensp;</strong>
+        {{ bloco.localConc }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Local de Dispersão: &ensp;</strong>
+        {{ bloco.localDisp }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Responsável: &ensp;</strong>
+        {{ bloco.responsavel }}</mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Telefone: &ensp;</strong> {{ bloco.telefone }}</mat-list-item
+      >
+    </mat-list>
+    <mat-card-actions>
+      <button mat-raised-button class="montserrat" color="primary">
+        <a href="{{ bloco.linkMyMaps }}" target="_blank"> Abrir MyMaps</a>
+
       </button>
       <button
         mat-raised-button

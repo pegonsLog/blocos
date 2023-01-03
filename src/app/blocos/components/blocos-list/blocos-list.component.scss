@@ -3,7 +3,12 @@ mat-card {
   margin: 2em auto;
 }
 
-.toolbar-month {
+mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar-regionais {
   padding-top: 10px;
   padding-bottom: 5px;
 }
@@ -27,12 +32,10 @@ a {
   justify-content: space-between;
   margin-bottom: 5px;
   height: 40px;
-  padding-right: 10px;
   font-family: "Montserrat";
 }
 
 .filtro-blocos {
-  min-width: 150px;
   width: 100%;
 }
 input {
@@ -45,4 +48,17 @@ mat-label {
 
 span{
   color: teal;
+}
+
+mat-grid-tile {
+  color: teal;
+  background: lightblue;
+}
+
+button{
+  padding-right: 5px;
+}
+.adicionar{
+  display: flex;
+  justify-content: space-between;
 }
