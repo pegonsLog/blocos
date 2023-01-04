@@ -3,41 +3,45 @@
   <mat-card-content>
     <mat-list role="list">
       <mat-list-item role="listitem"
-        ><strong> Nome do Bloco: &ensp;</strong> {{ bloco.nome }}</mat-list-item
+        ><strong> Nome do Bloco: </strong> &nbsp;&nbsp;<span>{{ bloco.nome }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Data do Desfile: &ensp;</strong>
-        {{ bloco.data }}</mat-list-item
+        ><strong>Data do Desfile: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.data }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Público: &ensp;</strong> {{ bloco.publico }}</mat-list-item
+        ><strong>Público: </strong> &nbsp;&nbsp;<span>{{ bloco.publico }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Hora da Concentração: &ensp;</strong>
-        {{ bloco.horaConc }}</mat-list-item
+        ><strong>Hora da Concentração: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.horaConc }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Hora do Desfile: &ensp;</strong>
-        {{ bloco.horaDesf }}</mat-list-item
+        ><strong>Hora do Desfile: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.horaDesf }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Hora de Dispersão: &ensp;</strong>
-        {{ bloco.horaDisp }}</mat-list-item
+        ><strong>Hora de Dispersão: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.horaDisp }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Local de Concentração: &ensp;</strong>
-        {{ bloco.localConc }}</mat-list-item
+        ><strong>Local de Concentração: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.localConc }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Local de Dispersão: &ensp;</strong>
-        {{ bloco.localDisp }}</mat-list-item
+        ><strong>Trajeto do Desfile: </strong>&nbsp;&nbsp;
+        <span>{{ 'PARA CONSULTAR, ABRA O DOT' }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Responsável: &ensp;</strong>
-        {{ bloco.responsavel }}</mat-list-item
+        ><strong>Local de Dispersão: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.localDisp }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Telefone: &ensp;</strong> {{ bloco.telefone }}</mat-list-item
+        ><strong>Responsável: </strong>&nbsp;&nbsp;
+        <span>{{ bloco.responsavel }}.</span></mat-list-item
+      >
+      <mat-list-item role="listitem"
+        ><strong>Telefone: </strong> &nbsp;&nbsp;<span>{{bloco.telefone }}.</span></mat-list-item
       >
     </mat-list>
     <mat-card-actions>

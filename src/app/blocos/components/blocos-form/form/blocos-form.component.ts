@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Bloco } from 'src/app/model/bloco';
-import { BlocosService } from '../blocos.service';
+import { BlocoFormService } from '../bloco-form.service';
 
 @Component({
   selector: 'app-blocos-form',
@@ -12,47 +12,31 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./blocos-form.component.scss']
 })
 export class BlocosFormComponent {
-  form = this.formBuilder.group({
-    id: [0],
-    nome: [''],
-    regional: [''],
-    data: [''],
-    publico: [0],
-    horaConc: [''],
-    horaDesf: [''],
-    horaDisp: [''],
-    responsavel: [''],
-    telefone: [''],
-    localConc: [''],
-    localDisp: [''],
-    linkDOT: [''],
-    linkMyMaps: ['']
-  });
+
+  form: FormGroup;
 
   constructor(
-    private blocosService: BlocosService,
+    private blocoFormService: BlocoFormService,
     private formBuilder: NonNullableFormBuilder,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private location: Location
   ) {
-    const bloco: Bloco = this.route.snapshot.data['add'];
-
-    this.form.setValue({
-      id: bloco.id,
-      nome: bloco.nome,
-      regional: bloco.regional,
-      data: bloco.data,
-      publico: bloco.publico,
-      horaConc: bloco.horaConc,
-      horaDesf: bloco.horaDesf,
-      horaDisp: bloco.horaDisp,
-      responsavel: bloco.responsavel,
-      telefone: bloco.telefone,
-      localConc: bloco.localConc,
-      localDisp: bloco.localDisp,
-      linkDOT: bloco.linkDOT,
-      linkMyMaps: bloco.linkMyMaps,
+    this.form = this.formBuilder.group({
+      id: [0],
+      nome: [''],
+      regional: [''],
+      data: [''],
+      publico: [0],
+      horaConc: [''],
+      horaDesf: [''],
+      horaDisp: [''],
+      responsavel: [''],
+      telefone: [''],
+      localConc: [''],
+      localDisp: [''],
+      linkDOT: [''],
+      linkMyMaps: ['']
     });
   }
 
@@ -61,7 +45,27 @@ export class BlocosFormComponent {
   }
 
   onSubmit() {
-    this.blocosService.save(this.form.value).subscribe(
+    const bloco: Bloco = this.route.snapshot.data['new'];
+    console.log(bloco);
+
+    this.form.setValue({
+      id: 0,
+      nome: '',
+      regional: '',
+      data: '',
+      publico: 0,
+      horaConc: '',
+      horaDesf: '',
+      horaDisp: '',
+      responsavel: '',
+      telefone: '',
+      localConc: '',
+      localDisp: '',
+      linkDOT: '',
+      linkMyMaps: '',
+    });
+
+    this.blocoFormService.save(this.form.value).subscribe(
       () => this.onSuccess(),
       () => this.onError()
     );

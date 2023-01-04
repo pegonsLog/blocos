@@ -6,6 +6,7 @@ mat-card {
 mat-toolbar{
   display: flex;
   justify-content: space-between;
+  font-family: "Montserrat";
 }
 
 .toolbar-regionais {
@@ -59,6 +60,7 @@ button{
   padding-right: 5px;
 }
 .adicionar{
-  display: flex;
-  justify-content: space-between;
+  font-size: 25px;
+  font-family: Montserrat;
 }
+

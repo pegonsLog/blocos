@@ -1,9 +1,8 @@
-import { environment } from '../../../environments/environment';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { Bloco, Blocos } from '../../model/bloco';
-import { map, Observable, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +23,9 @@ export class BlocosService {
     return this.http.get<Bloco>(`${this.API}/${id}`);
   }
 
-  save(bloco: Partial<Bloco>) {
-    return this.http.post<Bloco>(this.API, bloco);
-  }
-
   regionais() {
     return this.REGIONAIS;
   }
+
+
 }

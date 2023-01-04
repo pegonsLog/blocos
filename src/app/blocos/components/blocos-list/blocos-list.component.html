@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z8">
   <mat-toolbar color="primary"
     >Blocos
-    <a style="font-size: 25px" routerLink="add">+</a>
+    <button class="adicionar" mat-button (click)="onAdd()">+</button>
   </mat-toolbar>
   <div class="toolbar-regionais">
     <mat-grid-list cols="6" rowHeight="5:2">
@@ -45,6 +45,12 @@
         <div class="link">
           <button mat-button (click)="findOne(bloco.id)">
             <span class="material-symbols-outlined"> theater_comedy </span>
+          </button>
+          <button mat-button (click)="onEdit(bloco.id)">
+            <span class="material-symbols-outlined"> edit </span>
+          </button>
+          <button mat-button (click)="onDelete(bloco.id)">
+            <span class="material-symbols-outlined"> delete </span>
           </button>
         </div>
       </div>

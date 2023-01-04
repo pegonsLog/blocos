@@ -1,9 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
 @Component({
@@ -22,13 +21,14 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   constructor(
     private blocosService: BlocosService,
     private router: Router,
+    private routes: ActivatedRoute,
     private location: Location
   ) {}
 
   findOne(id: number) {
     //this.subscription = this.blocosService.findOne(id).subscribe(bloco => this.bloco = bloco);
     console.log(id);
-    this.router.navigate(['blocos/details', id]);
+    this.router.navigate(['details', id], {relativeTo: this.routes});
   }
 
   forByRegional(regional: string) {
@@ -43,9 +43,17 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     location.reload();
   }
 
-  add() {
+  onAdd() {
     //this.blocosService.findOne(1).subscribe(bloco => console.log(bloco));
-    this.router.navigate(['blocos/add']);
+    this.router.navigate(['forms/new'], {relativeTo: this.routes});
+  }
+
+  onEdit(id: number){
+    this.router.navigate(['forms/edit', id], {relativeTo: this.routes});
+  }
+
+  onDelete(id: number){
+
   }
 
   ngOnInit(): void {

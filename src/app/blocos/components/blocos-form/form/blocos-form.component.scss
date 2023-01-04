@@ -7,9 +7,9 @@ mat-card {
   width: 100%;
 }
 
-.min-width {
-  width: 100%;
-  min-width: 150px;
+.three-parts-width {
+  display: flex;
+  justify-content: space-between;
 }
 
 mat-card-actions {
@@ -21,6 +21,6 @@ mat-toolbar {
   font-family: Montserrat;
 }
 
-.montserrat{
+.montserrat {
   font-family: Montserrat;
 }
