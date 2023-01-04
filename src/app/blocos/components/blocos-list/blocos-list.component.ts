@@ -1,7 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
@@ -11,7 +12,8 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./blocos-list.component.scss'],
 })
 export class BlocosListComponent implements OnInit, OnDestroy {
-  blocos$: any = this.blocosService.list();
+  blocos$ = this.blocosService.list();
+
   value: string = '';
   regionais: string[] = [];
   bloco: any;
@@ -30,8 +32,11 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   }
 
   forByRegional(regional: string) {
-    this.blocos$ = this.blocosService.findByRegional(regional);
-    this.load();
+    this.blocos$ = this.blocosService
+      .list()
+      .pipe(
+        map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
+      );
   }
 
   load() {

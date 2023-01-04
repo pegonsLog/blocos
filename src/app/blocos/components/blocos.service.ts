@@ -2,7 +2,8 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Bloco, Blocos } from '../../model/bloco';
-import { filter, map, Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +22,6 @@ export class BlocosService {
 
   findOne(id: number) {
     return this.http.get<Bloco>(`${this.API}/${id}`);
-  }
-
-  findByRegional(regional: string) {
-    return this.http.get<Blocos>(this.API);
-
-    //.pipe(map((blocos: Blocos) => filter((bloco: Bloco) => bloco.regional === regional)));
-    //{filter((bloco: Bloco) => bloco.regional === regional)})).subscribe(data => console.log(data));
   }
 
   save(bloco: Partial<Bloco>) {
