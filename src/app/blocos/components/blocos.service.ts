@@ -9,7 +9,18 @@ import { Bloco, Blocos } from '../../model/bloco';
 })
 export class BlocosService {
   private readonly API = `${environment.API}blocos`;
-  private readonly REGIONAIS = ['GARBO', 'GARNE', 'GARNP', 'GARVN', 'GEACE'];
+  private readonly REGIONAIS = [
+    'BARREIRO',
+    'OESTE',
+    'NOROESTE',
+    'PAMPULHA',
+    'SUL',
+    'LESTE',
+    'NORDESTE',
+    'NORTE',
+    'VENDA NOVA',
+    'CENTRO',
+  ];
   private blocos: Blocos = [];
   private subscription = new Subscription();
 
@@ -26,6 +37,4 @@ export class BlocosService {
   regionais() {
     return this.REGIONAIS;
   }
-
-
 }
