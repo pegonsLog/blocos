@@ -3,14 +3,18 @@
   <mat-card-content>
     <mat-list role="list">
       <mat-list-item role="listitem"
-        ><strong> Nome do Bloco: </strong> &nbsp;&nbsp;<span>{{ bloco.nome }}.</span></mat-list-item
+        ><strong> Nome do Bloco: </strong> &nbsp;&nbsp;<span
+          >{{ bloco.nome }}.</span
+        ></mat-list-item
       >
       <mat-list-item role="listitem"
         ><strong>Data do Desfile: </strong>&nbsp;&nbsp;
         <span>{{ bloco.data }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Público: </strong> &nbsp;&nbsp;<span>{{ bloco.publico }}.</span></mat-list-item
+        ><strong>Público: </strong> &nbsp;&nbsp;<span
+          >{{ bloco.publico }}.</span
+        ></mat-list-item
       >
       <mat-list-item role="listitem"
         ><strong>Hora da Concentração: </strong>&nbsp;&nbsp;
@@ -30,7 +34,7 @@
       >
       <mat-list-item role="listitem"
         ><strong>Trajeto do Desfile: </strong>&nbsp;&nbsp;
-        <span>{{ 'PARA CONSULTAR, ABRA O DOT' }}.</span></mat-list-item
+        <span>{{ "PARA CONSULTAR, ABRA O DOT" }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
         ><strong>Local de Dispersão: </strong>&nbsp;&nbsp;
@@ -41,21 +45,21 @@
         <span>{{ bloco.responsavel }}.</span></mat-list-item
       >
       <mat-list-item role="listitem"
-        ><strong>Telefone: </strong> &nbsp;&nbsp;<span>{{bloco.telefone }}.</span></mat-list-item
+        ><strong>Telefone: </strong> &nbsp;&nbsp;<span
+          >{{ bloco.telefone }}.</span
+        ></mat-list-item
       >
     </mat-list>
     <mat-card-actions>
       <button mat-raised-button class="montserrat" color="primary">
         <a href="{{ bloco.linkMyMaps }}" target="_blank"> Abrir MyMaps</a>
-
       </button>
       <button
         mat-raised-button
         class="montserrat"
         color="primary"
-        (click)="onDot()"
       >
-        Abrir DOT
+        <a href="{{ bloco.linkDOT }}" target="_blank"> Abrir DOT</a>
       </button>
       <button mat-raised-button class="montserrat" (click)="onCancel()">
         Voltar

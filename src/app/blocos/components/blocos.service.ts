@@ -21,8 +21,6 @@ export class BlocosService {
     'VENDA NOVA',
     'CENTRO',
   ];
-  private blocos: Blocos = [];
-  private subscription = new Subscription();
 
   constructor(private http: HttpClient) {}
 
@@ -36,5 +34,9 @@ export class BlocosService {
 
   regionais() {
     return this.REGIONAIS;
+  }
+
+  delete(id: number){
+    return this.http.delete<Bloco>(`${this.API}/${id}`);
   }
 }

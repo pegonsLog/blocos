@@ -16,6 +16,8 @@ export class BlocosListComponent implements OnInit, OnDestroy {
 
   value: string = '';
   regionais: string[] = [];
+  regional: string = 'GERAL';
+  contador: number = 0;
   bloco: any;
   subscription: Subscription = new Subscription();
 
@@ -24,11 +26,13 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     private router: Router,
     private routes: ActivatedRoute,
     private location: Location
-  ) {}
+  ) {
+    this.subscription = this.blocosService
+      .list()
+      .subscribe((x) => (this.contador = x.length));
+  }
 
   findOne(id: number) {
-    //this.subscription = this.blocosService.findOne(id).subscribe(bloco => this.bloco = bloco);
-    console.log(id);
     this.router.navigate(['details', id], { relativeTo: this.routes });
   }
 
@@ -36,16 +40,24 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     this.blocos$ = this.blocosService
       .list()
       .pipe(
-        map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
-      );
+        map((blocos) => blocos.filter((bloco) => bloco.regional === regional)),
+      )
+    this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+
+    this.regional = regional;
   }
 
   load() {
-    location.reload();
+    this.blocos$ = this.blocosService
+      .list()
+      .pipe(
+        map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
+      )
+      this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+    this.regional = 'GERAL';
   }
 
   onAdd() {
-    //this.blocosService.findOne(1).subscribe(bloco => console.log(bloco));
     this.router.navigate(['forms/new'], { relativeTo: this.routes });
   }
 
@@ -53,7 +65,11 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     this.router.navigate(['forms/edit', id], { relativeTo: this.routes });
   }
 
-  onDelete(id: number) {}
+  onDelete(id: number) {
+    this.subscription = this.blocosService.delete(id).subscribe(() => console.log('Bloco deletado com sucesso!!'));
+    this.load();
+    this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+  }
 
   ngOnInit(): void {
     this.regionais = this.blocosService.regionais();

@@ -34,7 +34,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     private blocosService: BlocosService,
     private routes: ActivatedRoute,
-    private router: Router,
     private location: Location
   ) {
    }
@@ -43,12 +42,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     const id = this.routes.snapshot.params['id'];
    this.subscription = this.blocosService.findOne(id).subscribe((bloco: Bloco) => this.bloco = bloco);
   }
-
-  onMyMaps() {
- 
-  }
-
-  onDot() {}
 
   onCancel() {
     this.location.back();

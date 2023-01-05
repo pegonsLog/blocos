@@ -19,7 +19,15 @@ export class BlocoFormService {
 
   }
   save(bloco: Partial<Bloco>) {
-    return this.http.post<Bloco>(this.API, bloco);
+
+    if(bloco.id){
+      return this.http.put<Bloco>(`${this.API}/${bloco.id}`, bloco).pipe(first());
+    }
+    return this.http.post<Bloco>(this.API, bloco).pipe(first());
+  }
+
+  update(bloco: Partial<Bloco>) {
+    return this.http.patch<Bloco>(`${this.API}/${bloco.id}`, bloco).pipe(first());
   }
 
 

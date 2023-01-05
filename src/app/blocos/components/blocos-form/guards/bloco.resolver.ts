@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Bloco } from 'src/app/model/bloco';
 import { BlocoFormService } from '../bloco-form.service';
@@ -12,9 +9,8 @@ import { BlocoFormService } from '../bloco-form.service';
 })
 export class BlocoResolver implements Resolve<Bloco> {
   constructor(private blocoFormService: BlocoFormService) {}
-  resolve(
-    route: ActivatedRouteSnapshot,
-  ): Observable<Bloco> {
+  
+  resolve(route: ActivatedRouteSnapshot): Observable<Bloco> {
     if (route.params && route.params['id']) {
       return this.blocoFormService.loadById(route.params['id']);
     }

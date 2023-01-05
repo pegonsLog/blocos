@@ -55,6 +55,7 @@ mat-grid-tile {
 }
 
 button {
+  padding: 0px;
   font-size: 12px;
 }
 .adicionar {
@@ -64,4 +65,9 @@ button {
 .montserrat {
   color: teal;
   font-family: Montserrat;
+}
+
+.container {
+  height: 455px;
+  overflow: auto;
 }

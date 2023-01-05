@@ -4,7 +4,7 @@
     <button class="adicionar" mat-button (click)="onAdd()">+</button>
   </mat-toolbar>
   <div class="toolbar-regionais">
-    <mat-grid-list cols="5" rowHeight="5:2">
+    <mat-grid-list cols="5" rowHeight="6:2">
       <mat-grid-tile *ngFor="let regional of regionais">
         <button mat-button class="montserrat" (click)="forByRegional(regional)">
           {{ regional }}
@@ -13,12 +13,15 @@
     </mat-grid-list>
   </div>
   <div>
-    <mat-grid-list cols="3" rowHeight="9:2">
-        <mat-grid-tile [colspan]="1">
-          <button mat-button class="montserrat" (click)="load()">GERAL</button>
-        </mat-grid-tile>
+    <mat-grid-list cols="5" rowHeight="6:2">
+      <mat-grid-tile [colspan]="1">
+        <button mat-button class="montserrat" (click)="load()">GERAL</button>
+      </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <span class="montserrat">Nº DE REGISTROS: {{ 0 }}</span>
+        <span class="montserrat">REGIONAL: {{ regional }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2">
+        <span class="montserrat">Nº DE REGISTROS: {{ contador }}</span>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -42,23 +45,31 @@
     </span>
   </div>
 
-  <div *ngIf="blocos$">
-    <div *ngFor="let bloco of blocos$ | async as Blocos">
-      <div class="link">
-        <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
-          {{ bloco.nome }}
-        </a>
-
+  <div *ngIf="contador > 0">
+    <div class="container">
+      <div *ngFor="let bloco of blocos$ | async as Blocos">
         <div class="link">
-          <button mat-button (click)="findOne(bloco.id)">
-            <span style="font-size: 20px;" class="material-symbols-outlined"> theater_comedy </span>
-          </button>
-          <button mat-button (click)="onEdit(bloco.id)">
-            <span style="font-size: 20px;" class="material-symbols-outlined"> edit </span>
-          </button>
-          <button mat-button (click)="onDelete(bloco.id)">
-            <span style="font-size: 20px;" class="material-symbols-outlined"> delete </span>
-          </button>
+          <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
+            {{ bloco.nome }}
+          </a>
+
+          <div class="link">
+            <button mat-button (click)="findOne(bloco.id)">
+              <span style="font-size: 20px" class="material-symbols-outlined">
+                theater_comedy
+              </span>
+            </button>
+            <button mat-button (click)="onEdit(bloco.id)">
+              <span style="font-size: 20px" class="material-symbols-outlined">
+                edit
+              </span>
+            </button>
+            <button mat-button (click)="onDelete(bloco.id)">
+              <span style="font-size: 20px" class="material-symbols-outlined">
+                delete
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
