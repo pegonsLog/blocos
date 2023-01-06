@@ -9,13 +9,13 @@ import { BlocoFormService } from '../bloco-form.service';
 })
 export class BlocoResolver implements Resolve<Bloco> {
   constructor(private blocoFormService: BlocoFormService) {}
-  
+
   resolve(route: ActivatedRouteSnapshot): Observable<Bloco> {
     if (route.params && route.params['id']) {
       return this.blocoFormService.loadById(route.params['id']);
     }
     return of({
-      id: 0,
+      id: '',
       nome: '',
       regional: '',
       data: '',

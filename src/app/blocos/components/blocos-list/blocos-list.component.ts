@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,14 +25,13 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     private blocosService: BlocosService,
     private router: Router,
     private routes: ActivatedRoute,
-    private location: Location
   ) {
     this.subscription = this.blocosService
       .list()
       .subscribe((x) => (this.contador = x.length));
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     this.router.navigate(['details', id], { relativeTo: this.routes });
   }
 
@@ -43,10 +41,7 @@ export class BlocosListComponent implements OnInit, OnDestroy {
       .pipe(
         map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
       );
-    this.blocos$
-      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
-      .subscribe();
-
+    this.counter();
     this.regional = regional;
   }
 
@@ -56,9 +51,7 @@ export class BlocosListComponent implements OnInit, OnDestroy {
       .pipe(
         map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
       );
-    this.blocos$
-      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
-      .subscribe();
+    this.counter();
     this.regional = 'GERAL';
   }
 
@@ -66,26 +59,30 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     this.router.navigate(['forms/new'], { relativeTo: this.routes });
   }
 
-  onEdit(id: number) {
+  onEdit(id: string) {
     this.router.navigate(['forms/edit', id], { relativeTo: this.routes });
   }
 
-  onDelete(id: number) {
+  onDelete(id: string) {
     this.subscription = this.blocosService
       .delete(id)
       .subscribe(() => console.log('Bloco deletado com sucesso!!'));
     this.load();
-    this.blocos$
-      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
-      .subscribe();
+    this.counter();
   }
 
-  onSearch(){
+  onSearch() {
     console.log(this.queryField.value);
   }
 
   ngOnInit(): void {
     this.regionais = this.blocosService.regionais();
+  }
+
+  counter() {
+    this.blocos$
+      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
   }
 
   ngOnDestroy(): void {

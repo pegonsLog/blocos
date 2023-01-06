@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Bloco, Blocos } from '../../model/bloco';
 
@@ -28,7 +27,7 @@ export class BlocosService {
     return this.http.get<Blocos>(this.API);
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.http.get<Bloco>(`${this.API}/${id}`);
   }
 
@@ -36,7 +35,7 @@ export class BlocosService {
     return this.REGIONAIS;
   }
 
-  delete(id: number){
+  delete(id: string){
     return this.http.delete<Bloco>(`${this.API}/${id}`);
   }
 }

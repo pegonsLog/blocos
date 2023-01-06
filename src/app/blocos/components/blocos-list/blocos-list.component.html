@@ -25,40 +25,32 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div>
-    <span>
-      <mat-form-field class="filtro-blocos">
-        <div>
-          <mat-label>Digite parte do nome do bloco</mat-label>
-          <input
-            matInput
-            type="text"
-            id="myTable"
-            class="form-control"
-            [formControl]="queryField"
-            placeholder="Pesquisar blocos"
-          />
-        </div>
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </span>
-    <!-- <span class="pesquisar">
+  <div class="pesquisar">
+    <mat-form-field>
+      <mat-label>Digite parte do nome do bloco</mat-label>
+      <input
+        matInput
+        type="text"
+        id="myTable"
+        class="form-control"
+        [formControl]="queryField"
+        
+      />
       <button
-      mat-raised-button
-      class="montserrat"
-      (click)="onSearch()"
+        *ngIf="value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="value = ''"
       >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+<div>
+    <button mat-raised-button class="montserrat" (click)="onSearch()">
       PESQUISAR
     </button>
-  </span> -->
+  </div>
   </div>
 
   <div *ngIf="contador > 0">

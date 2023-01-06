@@ -34,15 +34,8 @@ a {
   height: 40px;
 }
 
-.filtro-blocos {
-  width: 100%;
-}
-input {
-  margin-top: 10px;
-  display: flex;
-}
 mat-label {
-  color: #939393;
+  color: #cccccc;
 }
 
 span {
@@ -72,10 +65,16 @@ button {
   overflow: auto;
 }
 
-.pesquisar{
-  display: flex;
-  justify-content: space-between;
+.pesquisar {
   margin: auto;
-  color: white;
-  font-size: 12px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+mat-form-field{
+  padding-top: 15px;
+  width: 85%;
+
 }

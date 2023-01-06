@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class DetailsComponent implements OnInit, OnDestroy {
 
   bloco: Bloco = {
-    id: 0,
+    id: '',
     nome: '',
     data: '',
     regional: '',

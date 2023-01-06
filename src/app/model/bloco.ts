@@ -2,7 +2,7 @@
 export interface Blocos extends Array<Bloco>{}
 
 export interface Bloco {
-  id: number;
+  id: string;
   nome: string;
   regional: string;
   data: string;

@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class BlocosFormComponent {
   form = this.formBuilder.group({
-    id: [0],
+    id: [''],
     nome: [''],
     regional: [''],
     data: [''],
@@ -40,7 +40,7 @@ export class BlocosFormComponent {
     private location: Location
   ) {
     const bloco: Bloco = this.route.snapshot.data['bloco'];
-    if (bloco.id > 0) {
+    if (bloco.id !== '') {
       this.verificador = true;
     } else {
       this.verificador = false;
