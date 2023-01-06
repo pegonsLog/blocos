@@ -55,7 +55,7 @@ mat-grid-tile {
 }
 
 button {
-  padding: 0px;
+  color: white;
   font-size: 12px;
 }
 .adicionar {
@@ -70,4 +70,12 @@ button {
 .container {
   height: 455px;
   overflow: auto;
+}
+
+.pesquisar{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  color: white;
+  font-size: 12px;
 }

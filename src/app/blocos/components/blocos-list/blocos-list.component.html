@@ -30,7 +30,14 @@
       <mat-form-field class="filtro-blocos">
         <div>
           <mat-label>Digite parte do nome do bloco</mat-label>
-          <input matInput type="text" [(ngModel)]="value" />
+          <input
+            matInput
+            type="text"
+            id="myTable"
+            class="form-control"
+            [formControl]="queryField"
+            placeholder="Pesquisar blocos"
+          />
         </div>
         <button
           *ngIf="value"
@@ -43,6 +50,15 @@
         </button>
       </mat-form-field>
     </span>
+    <!-- <span class="pesquisar">
+      <button
+      mat-raised-button
+      class="montserrat"
+      (click)="onSearch()"
+      >
+      PESQUISAR
+    </button>
+  </span> -->
   </div>
 
   <div *ngIf="contador > 0">

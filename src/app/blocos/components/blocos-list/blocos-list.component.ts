@@ -1,8 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { count, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
@@ -13,7 +14,7 @@ import { BlocosService } from '../blocos.service';
 })
 export class BlocosListComponent implements OnInit, OnDestroy {
   blocos$ = this.blocosService.list();
-
+  queryField = new FormControl();
   value: string = '';
   regionais: string[] = [];
   regional: string = 'GERAL';
@@ -40,9 +41,11 @@ export class BlocosListComponent implements OnInit, OnDestroy {
     this.blocos$ = this.blocosService
       .list()
       .pipe(
-        map((blocos) => blocos.filter((bloco) => bloco.regional === regional)),
-      )
-    this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+        map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
+      );
+    this.blocos$
+      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
 
     this.regional = regional;
   }
@@ -52,8 +55,10 @@ export class BlocosListComponent implements OnInit, OnDestroy {
       .list()
       .pipe(
         map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
-      )
-      this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+      );
+    this.blocos$
+      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
     this.regional = 'GERAL';
   }
 
@@ -66,9 +71,17 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(id: number) {
-    this.subscription = this.blocosService.delete(id).subscribe(() => console.log('Bloco deletado com sucesso!!'));
+    this.subscription = this.blocosService
+      .delete(id)
+      .subscribe(() => console.log('Bloco deletado com sucesso!!'));
     this.load();
-    this.blocos$.pipe(map((blocos: Blocos) => this.contador = blocos.length)).subscribe();
+    this.blocos$
+      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
+  }
+
+  onSearch(){
+    console.log(this.queryField.value);
   }
 
   ngOnInit(): void {
