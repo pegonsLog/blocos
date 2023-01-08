@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z8">
-  <mat-toolbar color="primary"
-    >Blocos
-    <button class="adicionar" mat-button (click)="onAdd()">+</button>
+  <mat-toolbar color="primary" class="montserrat"
+    >BLOCOS
+    <button class="adicionar monserrat" mat-button (click)="onAdd()">+</button>
   </mat-toolbar>
   <div class="toolbar-regionais">
     <mat-grid-list cols="5" rowHeight="6:2">
@@ -34,7 +34,7 @@
         id="myTable"
         class="form-control"
         [formControl]="queryField"
-        
+
       />
       <button
         *ngIf="value"
@@ -62,17 +62,17 @@
           </a>
 
           <div class="link">
-            <button mat-button (click)="findOne(bloco.id)">
+            <button class="button-details" (click)="findOne(bloco.id)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 theater_comedy
               </span>
             </button>
-            <button mat-button (click)="onEdit(bloco.id)">
+            <button class="button-details" (click)="onEdit(bloco.id)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 edit
               </span>
             </button>
-            <button mat-button (click)="onDelete(bloco.id)">
+            <button class="button-details" (click)="onDelete(bloco.id)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 delete
               </span>

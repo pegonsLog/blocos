@@ -1,12 +1,13 @@
 mat-card {
-  max-width: 40%;
+  min-width: 500px;
+  max-width: 700px;
   margin: 2em auto;
 }
 
 mat-toolbar {
   display: flex;
   justify-content: space-between;
-  font-family: Montserrat;
+  padding-right: 0px;
 }
 
 .toolbar-regionais {
@@ -32,6 +33,7 @@ a {
   justify-content: space-between;
   margin-bottom: 5px;
   height: 40px;
+  color: teal;
 }
 
 mat-label {
@@ -48,16 +50,17 @@ mat-grid-tile {
 }
 
 button {
-  color: white;
   font-size: 12px;
+  min-width: min-content;
+}
+
+.button-details {
+  border: 0px;
+  background: lightblue;
 }
 .adicionar {
   font-size: 25px;
-  font-family: Montserrat;
-}
-.montserrat {
-  color: teal;
-  font-family: Montserrat;
+  color: #fff;
 }
 
 .container {
@@ -73,8 +76,11 @@ button {
   justify-content: space-between;
   height: 60px;
 }
-mat-form-field{
+mat-form-field {
   padding-top: 15px;
   width: 85%;
+}
 
+.montserrat{
+  font-family: Montserrat;
 }

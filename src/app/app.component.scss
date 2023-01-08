@@ -1,15 +1,16 @@
 a {
+  margin: 0 auto;
   text-decoration: none;
   color: inherit;
-}
-
-span {
   font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.title-size {
-  display: flex;
-  justify-content:  center;
-  font-size: x-large;
+span {
+  padding: 20px;
 }
 
+.title-size {
+
+  font-size: x-large;
+  text-align: center;
+}
