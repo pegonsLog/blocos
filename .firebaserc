@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "crowsoft-carnaval-bhtrans"
+  },
+  "targets": {
+    "crowsoft-carnaval-bhtrans": {
+      "hosting": {
+        "blocos": [
+          "crowsoft-carnaval-bhtrans"
+        ]
+      }
+    }
   }
 }

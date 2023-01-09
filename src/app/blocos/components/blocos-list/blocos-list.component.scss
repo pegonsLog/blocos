@@ -1,7 +1,8 @@
-mat-card {
-  max-width: 40%;
-  margin: 2em auto;
-}
+  mat-card {
+    margin: 0 auto;
+    min-width: 600px;
+    max-width: 600px;
+  }
 
 mat-toolbar {
   display: flex;
@@ -49,8 +50,9 @@ mat-grid-tile {
 }
 
 button {
-  color: white;
+  color: teal;
   font-size: 12px;
+
 }
 .adicionar {
   font-size: 25px;
@@ -72,6 +74,17 @@ button {
 }
 mat-form-field {
   padding-top: 15px;
-  width: 85%;
-
+  width: 70%;
+}
+.icons{
+  display: flex;
+  background-color: lightblue;
+  border: none;
+  align-items: center;
+}
+.montserrat{
+  font-family: Montserrat;
+}
+.weight-icons {
+font-weight: lighter;
 }
