@@ -34,7 +34,7 @@
         id="myTable"
         class="form-control"
         [formControl]="queryField"
-        
+
       />
       <button
         *ngIf="value"
@@ -62,17 +62,17 @@
           </a>
 
           <div class="link">
-            <button mat-button (click)="findOne(bloco.id)">
-              <span style="font-size: 20px" class="material-symbols-outlined">
+            <button class="icons" (click)="findOne(bloco.id)">
+              <span id="weight-icons" style="font-size: 20px" class="material-symbols-outlined">
                 theater_comedy
               </span>
             </button>
-            <button mat-button (click)="onEdit(bloco.id)">
-              <span style="font-size: 20px" class="material-symbols-outlined">
+            <button class="icons" (click)="onEdit(bloco.id)">
+              <span id="weight-icons" style="font-size: 20px" class="material-symbols-outlined">
                 edit
               </span>
             </button>
-            <button mat-button (click)="onDelete(bloco.id)">
+            <button class="icons" (click)="onDelete(bloco.id)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 delete
               </span>

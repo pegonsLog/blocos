@@ -124,6 +124,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "blocos:build:production",
+            "firebaseProject": "crowsoft-carnaval-bhtrans",
+            "firebaseHostingSite": "crowsoft-carnaval-bhtrans"
+          }
         }
       }
     }

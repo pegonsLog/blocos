@@ -1,4 +1,7 @@
 {
+  "database": {
+    "rules": "blocos.json"
+  },
   "hosting": {
     "public": "dist/blocos",
     "ignore": [
