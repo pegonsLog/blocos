@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class BlocoFormService {
 
-  private readonly API = `${environment.API}blocos`;
+  private readonly API = `${environment.firebase}blocos`;
 
   constructor(private http: HttpClient) { }
 

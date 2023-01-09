@@ -1,8 +1,17 @@
+
+  mat-toolbar {
+    min-width: 632px;
+    max-width: 100%;
+  }
+
+
+
 a {
   margin: 0 auto;
   text-decoration: none;
   color: inherit;
   font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+<<<<<<< HEAD
 }
 
 span {
@@ -13,4 +22,14 @@ span {
 
   font-size: x-large;
   text-align: center;
+=======
+  font-weight: 300;
+  font-size: 20px;
+  margin: 0 auto;
+
+}
+
+span {
+  margin-left: 20px;
+>>>>>>> 823f1ec4f5be0bc7a2ecaa9dfffd5228fd53360f
 }

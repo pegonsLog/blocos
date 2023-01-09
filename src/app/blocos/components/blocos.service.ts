@@ -7,7 +7,7 @@ import { Bloco, Blocos } from '../../model/bloco';
   providedIn: 'root',
 })
 export class BlocosService {
-  private readonly API = `${environment.API}blocos`;
+  private readonly API = `${environment.firebase}/blocos`;
   private readonly REGIONAIS = [
     'BARREIRO',
     'OESTE',
