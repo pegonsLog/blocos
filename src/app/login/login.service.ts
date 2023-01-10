@@ -9,8 +9,11 @@ import { User } from '../model/user';
 export class LoginService {
   private readonly API = 'http://localhost:3000';
   users: User[] = [];
-  auth: boolean = false;
-  userLogin: User = { id: 1, user: 'ze', password: '123' };
+  auth: string = '';
+  userLogin: User[] = [
+    { id: 1, user: '2023', password: '3202', role: 'user' },
+    { id: 2, user: '564', password: '123456', role: 'adm' },
+  ];
 
   constructor(private http: HttpClient) {
     //this.getAll();
@@ -25,18 +28,13 @@ export class LoginService {
       });
   }
 
-  userAuth(user: Partial<User>): boolean {
-    //   for (let u of this.users) {
-    //     if (user.user == u.user && user.password == u.password) {
-    //       return (this.auth = true);
-    //     }
-    //   }
-    //   return (this.auth = false);
-    // }
-    if (user.user == 'ze' && user.password == '123') {
-      return (this.auth = true);
-    }else{
-      return (this.auth = false);
+  userAuth(user: Partial<User>): string {
+    if (user.user === '2023' && user.password === '3202') {
+      return 'user';
     }
+    if (user.user === '564' && user.password === '123456') {
+      return 'adm';
+    }
+    return '';
   }
 }

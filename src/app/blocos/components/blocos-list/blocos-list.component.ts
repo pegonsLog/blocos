@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -20,6 +20,7 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   contador: number = 0;
   bloco: any;
   subscription: Subscription = new Subscription();
+  @Input() role: boolean = false;
 
   constructor(
     private blocosService: BlocosService,

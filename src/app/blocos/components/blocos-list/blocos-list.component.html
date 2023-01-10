@@ -1,7 +1,7 @@
 <mat-card class="mat-elevation-z8">
-  <mat-toolbar color="primary" class="montserrat"
+  <mat-toolbar color="primary" id="peso-fonte" class="montserrat"
     >BLOCOS
-    <button class="adicionar monserrat" mat-button (click)="onAdd()">+</button>
+    <button class="monserrat" mat-button (click)="onAdd()"><span id="peso-fonte-plus">+</span></button>
   </mat-toolbar>
   <div class="toolbar-regionais">
     <mat-grid-list cols="5" rowHeight="6:2">
@@ -18,10 +18,10 @@
         <button mat-button class="montserrat" (click)="load()">GERAL</button>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <span class="montserrat">REGIONAL: {{ regional }}</span>
+        <span class="montserrat">REGIONAL: <span id="red">{{ regional }}</span></span>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <span class="montserrat">Nº DE REGISTROS: {{ contador }}</span>
+        <span class="montserrat">Nº DE REGISTROS: <span id="red">{{ contador }}</span></span>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -46,11 +46,6 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-<div>
-    <button mat-raised-button class="montserrat" (click)="onSearch()">
-      PESQUISAR
-    </button>
-  </div>
   </div>
 
   <div *ngIf="contador > 0">

@@ -73,7 +73,7 @@ button {
 }
 mat-form-field {
   padding-top: 15px;
-  width: 70%;
+  width: 100%;
 }
 .icons {
   display: flex;
@@ -90,4 +90,19 @@ mat-form-field {
 .button-details{
   background: lightblue;
   border: none;
+}
+
+#red{
+  margin-left: 10px;
+  font-weight: 500;
+  color: #b34646
+}
+#peso-fonte{
+  font-weight: 300;
+}
+#peso-fonte-plus{
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
+  font-family: Montserrat;
 }

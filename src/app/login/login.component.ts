@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
   form: FormGroup;
-  userAuth: boolean = false;
+  userAuth: string = '' ;
+ @Output() adm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -20,16 +21,22 @@ export class LoginComponent {
     private loginService: LoginService
   ) {
     this.form = this.formBuilder.group({
-      user: ['ze'],
-      password: ['123'],
+      user: ['2023'],
+      password: ['3202'],
     });
   }
 
   onSubmit() {
     this.userAuth = this.loginService.userAuth(this.form.value);
-    if (this.userAuth) {
+    if (this.userAuth = 'user') {
       this.router.navigate(['blocos']);
-    } else {
+      this.role(false);
+    }
+    if (this.userAuth = 'adm') {
+      this.router.navigate(['blocos']);
+      this.role(true);
+    }
+    else {
       this.onError();
     }
   }
@@ -44,5 +51,9 @@ export class LoginComponent {
       verticalPosition: 'top',
       horizontalPosition: 'center',
     });
+  }
+
+  role(status: boolean){
+    this.adm.emit(status);
   }
 }

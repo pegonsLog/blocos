@@ -31,6 +31,7 @@ export class BlocosFormComponent {
   });
   subscription: Subscription = new Subscription();
   verificador: boolean = false;
+  nomeFormulario: string = '';
 
   constructor(
     private blocoFormService: BlocoFormService,
@@ -42,8 +43,10 @@ export class BlocosFormComponent {
     const bloco: Bloco = this.route.snapshot.data['bloco'];
     if (bloco.id !== '') {
       this.verificador = true;
+      this.nomeFormulario="ALTERAR";
     } else {
       this.verificador = false;
+      this.nomeFormulario="ADICIONAR";
     }
     this.form.setValue({
       id: bloco.id,

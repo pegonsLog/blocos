@@ -1,5 +1,5 @@
 mat-card {
-  width: 40%;
+  width: 60%;
   margin: 2em auto;
 }
 
@@ -23,4 +23,26 @@ mat-toolbar {
 
 .montserrat {
   font-family: Montserrat;
+}
+#responsavel {
+  width: 46%;
+}
+#linha-dois{
+  display: flex;
+  justify-content: space-between;
+}
+#largura-publico {
+  width: 15%;
+}
+#largura-data{
+  width: 15%;
+}
+.espacamento-desfile{
+  width: 32.5%;
+}
+#tel-responsavel{
+  width: 20%;
+}
+#peso-fonte{
+  font-weight: 300;
 }
