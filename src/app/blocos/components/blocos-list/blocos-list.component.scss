@@ -1,8 +1,8 @@
-  mat-card {
-    margin: 0 auto;
-    min-width: 600px;
-    max-width: 600px;
-  }
+mat-card {
+  margin: 0 auto;
+  min-width: 600px;
+  max-width: 600px;
+}
 
 mat-toolbar {
   display: flex;
@@ -52,7 +52,6 @@ mat-grid-tile {
 button {
   color: teal;
   font-size: 12px;
-
 }
 .adicionar {
   font-size: 25px;
@@ -76,15 +75,19 @@ mat-form-field {
   padding-top: 15px;
   width: 70%;
 }
-.icons{
+.icons {
   display: flex;
   background-color: lightblue;
   border: none;
   align-items: center;
 }
-.montserrat{
+.montserrat {
   font-family: Montserrat;
 }
 .weight-icons {
-font-weight: lighter;
+  font-weight: lighter;
+}
+.button-details{
+  background: lightblue;
+  border: none;
 }

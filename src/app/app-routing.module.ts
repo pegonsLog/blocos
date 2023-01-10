@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  { path: '', component: LoginComponent },
 
   {
     path: 'blocos',
@@ -12,12 +12,10 @@ const routes: Routes = [
         (m) => m.BlocosModule
       ),
   },
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
