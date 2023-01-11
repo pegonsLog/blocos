@@ -12,7 +12,6 @@ import { LoginService } from './login.service';
 export class LoginComponent {
   form: FormGroup;
   userAuth: string = '' ;
- @Output() adm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -28,13 +27,11 @@ export class LoginComponent {
 
   onSubmit() {
     this.userAuth = this.loginService.userAuth(this.form.value);
-    if (this.userAuth = 'user') {
+    if (this.userAuth === 'user') {
       this.router.navigate(['blocos']);
-      this.role(false);
     }
-    if (this.userAuth = 'adm') {
+    if (this.userAuth === 'adm') {
       this.router.navigate(['blocos']);
-      this.role(true);
     }
     else {
       this.onError();
@@ -51,9 +48,5 @@ export class LoginComponent {
       verticalPosition: 'top',
       horizontalPosition: 'center',
     });
-  }
-
-  role(status: boolean){
-    this.adm.emit(status);
   }
 }

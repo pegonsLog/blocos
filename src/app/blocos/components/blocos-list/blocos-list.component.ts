@@ -86,6 +86,11 @@ export class BlocosListComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
+  admDefinition(x: boolean){
+    this.role = x;
+    console.log(x);
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

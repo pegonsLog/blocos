@@ -12,6 +12,7 @@ import { LoginComponent } from './login.component';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+
   ],
   exports: [LoginComponent],
 })
