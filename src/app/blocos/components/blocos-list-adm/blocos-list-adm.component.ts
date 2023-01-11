@@ -59,7 +59,7 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
-    this.router.navigate(['blocos/forms/new'], { relativeTo: this.routes });
+    this.router.navigate(['blocos/forms/new']);
   }
 
   onEdit(id: string) {

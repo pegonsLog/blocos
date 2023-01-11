@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { Bloco, Blocos } from '../../model/bloco';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlocosService {
- // private readonly API = "https://crowsoft-carnaval-bhtrans-default-rtdb.firebaseio.com";
- private readonly API = 'http://localhost:3000/blocos';
+// private readonly API = "https://crowsoft-carnaval-bhtrans-default-rtdb.firebaseio.com/blocos";
+private readonly API = 'http://localhost:3000/blocos';
 
   private readonly REGIONAIS = [
     'BARREIRO',
