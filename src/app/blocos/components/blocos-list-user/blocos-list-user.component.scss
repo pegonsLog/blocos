@@ -1,0 +1,94 @@
+mat-card {
+  margin: 0 auto;
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.toolbar-regionais {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.title-size {
+  font-size: x-large;
+}
+
+.link {
+  background: lightblue;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  height: 40px;
+  color: teal;
+  align-items: center;
+}
+
+mat-label {
+  color: #cccccc;
+}
+
+span {
+  color: teal;
+}
+
+mat-grid-tile {
+  color: teal;
+  background: lightblue;
+}
+
+button {
+  color: teal;
+  font-size: 12px;
+}
+
+
+.container {
+  height: 455px;
+  overflow: auto;
+}
+
+.pesquisar {
+  margin: auto;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+mat-form-field {
+  padding-top: 15px;
+  width: 70%;
+}
+
+.montserrat {
+  font-family: Montserrat;
+}
+
+
+#red{
+  margin-left: 10px;
+  font-weight: 500;
+  color: #b34646
+}
+#peso-fonte{
+  font-weight: 300;
+}
+#peso-fonte-plus{
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
+  font-family: Montserrat;
+}
+.button-details{
+  background: lightblue;
+  border: none;
+}
+

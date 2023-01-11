@@ -1,7 +1,6 @@
-<mat-card class="mat-elevation-z8" >
+<mat-card class="mat-elevation-z8">
   <mat-toolbar color="primary" id="peso-fonte" class="montserrat"
     >BLOCOS
-    <button class="monserrat" mat-button (click)="onAdd()"><span id="peso-fonte-plus">+</span></button>
   </mat-toolbar>
   <div class="toolbar-regionais">
     <mat-grid-list cols="5" rowHeight="6:2">
@@ -18,10 +17,14 @@
         <button mat-button class="montserrat" (click)="load()">GERAL</button>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <span class="montserrat">REGIONAL: <span id="red">{{ regional }}</span></span>
+        <span class="montserrat"
+          >REGIONAL: <span id="red">{{ regional }}</span></span
+        >
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <span class="montserrat">Nº DE REGISTROS: <span id="red">{{ contador }}</span></span>
+        <span class="montserrat"
+          >Nº DE REGISTROS: <span id="red">{{ contador }}</span></span
+        >
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -34,7 +37,6 @@
         id="myTable"
         class="form-control"
         [formControl]="queryField"
-
       />
       <button
         *ngIf="value"
@@ -46,35 +48,28 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
+    <button mat-raised-button (click)="onSearch()">Pesquisar</button>
+    <button mat-raised-button (click)="load()">Limpar</button>
   </div>
 
   <div *ngIf="contador > 0">
     <div class="container">
       <div *ngFor="let bloco of blocos$ | async as Blocos">
         <div class="link">
+          <div>
           <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
             {{ bloco.nome }}
           </a>
+          <span id="regional" class="montserrat"> - ({{ bloco.regional }})</span>
+        </div>
 
-          <div class="link">
-            <button class="button-details" (click)="findOne(bloco.id)">
+            <button mat-button (click)="findOne(bloco.id)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 theater_comedy
-              </span>
-            </button>
-            <button class="button-details" (click)="onEdit(bloco.id)">
-              <span style="font-size: 20px" class="material-symbols-outlined">
-                edit
-              </span>
-            </button>
-            <button class="button-details" (click)="onDelete(bloco.id)">
-              <span style="font-size: 20px" class="material-symbols-outlined">
-                delete
               </span>
             </button>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </mat-card>

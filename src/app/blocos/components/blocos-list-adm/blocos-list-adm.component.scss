@@ -34,6 +34,7 @@ a {
   margin-bottom: 5px;
   height: 40px;
   color: teal;
+  align-items: center;
 }
 
 mat-label {
@@ -73,7 +74,7 @@ button {
 }
 mat-form-field {
   padding-top: 15px;
-  width: 100%;
+  width: 70%;
 }
 .icons {
   display: flex;
@@ -90,6 +91,7 @@ mat-form-field {
 .button-details{
   background: lightblue;
   border: none;
+  cursor: pointer;
 }
 
 #red{

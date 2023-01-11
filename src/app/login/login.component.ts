@@ -7,11 +7,11 @@ import { LoginService } from './login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   form: FormGroup;
-  userAuth: string = '' ;
+  userAuth: string = '';
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -20,20 +20,20 @@ export class LoginComponent {
     private loginService: LoginService
   ) {
     this.form = this.formBuilder.group({
-      user: ['2023'],
-      password: ['3202'],
+      user: ['564'],
+      password: ['123456'],
     });
   }
 
   onSubmit() {
     this.userAuth = this.loginService.userAuth(this.form.value);
     if (this.userAuth === 'user') {
-      this.router.navigate(['blocos']);
+      this.router.navigate(['blocos/user']);
     }
     if (this.userAuth === 'adm') {
-      this.router.navigate(['blocos']);
+      this.router.navigate(['blocos/adm']);
     }
-    else {
+    if (this.userAuth === '') {
       this.onError();
     }
   }

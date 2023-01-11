@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './blocos-detail/details.component';
-import { BlocosListComponent } from './blocos-list/blocos-list.component';
+import { BlocosListAdmComponent } from './blocos-list-adm/blocos-list-adm.component';
+import { BlocosListUserComponent } from './blocos-list-user/blocos-list-user.component';
 
 const routes: Routes = [
-  { path: '', component: BlocosListComponent },
+  { path: 'adm', component: BlocosListAdmComponent },
+  { path: 'user', component: BlocosListUserComponent },
 
   {
     path: 'forms',

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,10 +8,10 @@ import { BlocosService } from '../blocos.service';
 
 @Component({
   selector: 'app-blocos-list',
-  templateUrl: './blocos-list.component.html',
-  styleUrls: ['./blocos-list.component.scss'],
+  templateUrl: './blocos-list-adm.component.html',
+  styleUrls: ['./blocos-list-adm.component.scss'],
 })
-export class BlocosListComponent implements OnInit, OnDestroy {
+export class BlocosListAdmComponent implements OnInit, OnDestroy {
   blocos$ = this.blocosService.list();
   queryField = new FormControl();
   value: string = '';
@@ -20,12 +20,12 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   contador: number = 0;
   bloco: any;
   subscription: Subscription = new Subscription();
-  @Input() role: boolean = false;
+  blocosPesquisados: Blocos = [];
 
   constructor(
     private blocosService: BlocosService,
     private router: Router,
-    private routes: ActivatedRoute,
+    private routes: ActivatedRoute
   ) {
     this.subscription = this.blocosService
       .list()
@@ -33,7 +33,7 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   }
 
   findOne(id: string) {
-    this.router.navigate(['details', id], { relativeTo: this.routes });
+    this.router.navigate(['blocos/details', id]);
   }
 
   forByRegional(regional: string) {
@@ -53,15 +53,17 @@ export class BlocosListComponent implements OnInit, OnDestroy {
         map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
       );
     this.counter();
+    this.queryField.reset();
+    this.counter();
     this.regional = 'GERAL';
   }
 
   onAdd() {
-    this.router.navigate(['forms/new'], { relativeTo: this.routes });
+    this.router.navigate(['blocos/forms/new'], { relativeTo: this.routes });
   }
 
   onEdit(id: string) {
-    this.router.navigate(['forms/edit', id], { relativeTo: this.routes });
+    this.router.navigate(['blocos/forms/edit', id]);
   }
 
   onDelete(id: string) {
@@ -73,22 +75,29 @@ export class BlocosListComponent implements OnInit, OnDestroy {
   }
 
   onSearch() {
-    console.log(this.queryField.value);
+    let value = this.queryField.value;
+    if(value && (value = value.trim()) !== ''){
+    this.blocos$ = this.blocosService.list().pipe(
+      map((blocos) => blocos.filter((bloco) =>  bloco.nome.includes(value.toUpperCase())))
+    )
+    this.counter();
+    }
   }
 
   ngOnInit(): void {
     this.regionais = this.blocosService.regionais();
+    // this.queryField.valueChanges.pipe(
+    //   map(value => value.trim()),
+    //   filter(value => value.length > 1),
+    //   distinctUntilChanged(),
+    //   tap(value => console.log(value)))
+    //   .subscribe();
   }
 
   counter() {
     this.blocos$
       .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
-  }
-
-  admDefinition(x: boolean){
-    this.role = x;
-    console.log(x);
   }
 
   ngOnDestroy(): void {
