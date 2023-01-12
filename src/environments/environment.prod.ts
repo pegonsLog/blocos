@@ -1,5 +1,4 @@
 export const environment = {
-  production: false,
   firebase: {
     projectId: 'crowsoft-carnaval-bhtrans',
     appId: '1:298984360113:web:b0459b32df39a1414b7a90',
@@ -9,5 +8,8 @@ export const environment = {
     authDomain: 'crowsoft-carnaval-bhtrans.firebaseapp.com',
     messagingSenderId: '298984360113',
     measurementId: 'G-TVF9YGCXPR',
-  }
+  },
+
+  production: true,
+
 }

@@ -95,7 +95,8 @@
               "browserTarget": "blocos:build:production"
             },
             "development": {
-              "browserTarget": "blocos:build:development"
+              "browserTarget": "blocos:build:development",
+              "proxyConfig": "src/proxy.config.js"
             }
           },
           "defaultConfiguration": "development"
