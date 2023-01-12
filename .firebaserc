@@ -1,14 +1,14 @@
 {
   "targets": {
-    "crowsoft-carnaval-bhtrans": {
+    "carnaval-bhtrans-2023": {
       "hosting": {
         "blocos": [
-          "crowsoft-carnaval-bhtrans"
+          "carnaval-bhtrans-2023"
         ]
       }
     }
   },
   "projects": {
-    "default": "crowsoft-carnaval-bhtrans"
+    "default": "carnaval-bhtrans-2023"
   }
 }

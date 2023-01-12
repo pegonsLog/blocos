@@ -95,8 +95,7 @@
               "browserTarget": "blocos:build:production"
             },
             "development": {
-              "browserTarget": "blocos:build:development",
-              "proxyConfig": "src/proxy.config.js"
+              "browserTarget": "blocos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -132,8 +131,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "blocos:build:production",
-            "firebaseProject": "crowsoft-carnaval-bhtrans",
-            "firebaseHostingSite": "crowsoft-carnaval-bhtrans"
+            "firebaseProject": "carnaval-bhtrans-2023",
+            "firebaseHostingSite": "carnaval-bhtrans-2023"
           }
         }
       }

@@ -4,17 +4,17 @@
 
 export const environment = {
   firebase: {
-    projectId: 'crowsoft-carnaval-bhtrans',
-    appId: '1:298984360113:web:b0459b32df39a1414b7a90',
-    databaseURL: 'https://crowsoft-carnaval-bhtrans-default-rtdb.firebaseio.com',
-    storageBucket: 'crowsoft-carnaval-bhtrans.appspot.com',
-    apiKey: 'AIzaSyAyrsef6nU6qW8TQWo7AgO1F2MPieSLGK4',
-    authDomain: 'crowsoft-carnaval-bhtrans.firebaseapp.com',
-    messagingSenderId: '298984360113',
-    measurementId: 'G-TVF9YGCXPR',
+    projectId: 'carnaval-bhtrans-2023',
+    appId: '1:1052925941917:web:74b745a18d555863d69c74',
+    databaseURL: '/api',
+    storageBucket: 'carnaval-bhtrans-2023.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyDqPayiQyAzq4BoZrWpA5V5o4IFMn2Xt2A',
+    authDomain: 'carnaval-bhtrans-2023.firebaseapp.com',
+    messagingSenderId: '1052925941917',
   },
 
-  production: true,
+  production: false,
 
 }
 
