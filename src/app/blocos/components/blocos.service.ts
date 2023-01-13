@@ -8,8 +8,8 @@ import { Bloco, Blocos } from '../../model/bloco';
 })
 export class BlocosService {
 //private readonly API = "https://carnaval-bhtrans-2023-default-rtdb.firebaseio.com/blocos";
-private readonly API = 'http://localhost:3000/blocos';
-//private readonly API = environment.firebase.databaseURL;
+//private readonly API = 'http://localhost:3000/blocos';
+private readonly API = environment.firebase.databaseURL;
 
   private readonly REGIONAIS = [
     'BARREIRO',
@@ -26,12 +26,12 @@ private readonly API = 'http://localhost:3000/blocos';
 
   constructor(private http: HttpClient) {}
 
-  // test(){
-  //   console.log(environment.firebase.databaseURL)
-  // }
+  test(){
+    console.log(environment.firebase.databaseURL)
+  }
 
   list() {
-    return this.http.get<Blocos>(this.API);
+    return this.http.get<Blocos>(`${this.API}/blocos`);
   }
 
   findOne(id: string) {

@@ -4,17 +4,16 @@
 
 export const environment = {
   firebase: {
-    projectId: 'carnaval-bhtrans-2023',
-    appId: '1:1052925941917:web:74b745a18d555863d69c74',
-    databaseURL: 'https://carnaval-bhtrans-2023-default-rtdb.firebaseio.com',
-    storageBucket: 'carnaval-bhtrans-2023.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyDqPayiQyAzq4BoZrWpA5V5o4IFMn2Xt2A',
-    authDomain: 'carnaval-bhtrans-2023.firebaseapp.com',
-    messagingSenderId: '1052925941917',
+    apiKey: "AIzaSyDqPayiQyAzq4BoZrWpA5V5o4IFMn2Xt2A",
+    authDomain: "carnaval-bhtrans-2023.firebaseapp.com",
+    databaseURL: "https://carnaval-bhtrans-2023-default-rtdb.firebaseio.com",
+    projectId: "carnaval-bhtrans-2023",
+    storageBucket: "carnaval-bhtrans-2023.appspot.com",
+    messagingSenderId: "1052925941917",
+    appId: "1:1052925941917:web:74b745a18d555863d69c74"
   },
 
-  production: false,
+  production: true,
 
 }
 
