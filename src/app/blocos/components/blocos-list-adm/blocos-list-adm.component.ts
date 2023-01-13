@@ -30,7 +30,7 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
     this.subscription = this.blocosService
       .list()
       .subscribe((x) => (this.contador = x.length));
-      
+
   }
 
   findOne(id: string) {

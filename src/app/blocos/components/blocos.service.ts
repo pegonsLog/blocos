@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Bloco, Blocos } from '../../model/bloco';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlocosService {
 //private readonly API = "https://carnaval-bhtrans-2023-default-rtdb.firebaseio.com/blocos";
-//private readonly API = 'http://localhost:3000/blocos';
-private readonly API = environment.firebase.databaseURL + '/blocos';
+private readonly API = 'http://localhost:3000/blocos';
+//private readonly API = environment.firebase.databaseURL;
 
   private readonly REGIONAIS = [
     'BARREIRO',
@@ -26,9 +26,9 @@ private readonly API = environment.firebase.databaseURL + '/blocos';
 
   constructor(private http: HttpClient) {}
 
-  test(){
-    console.log(this.API)
-  }
+  // test(){
+  //   console.log(environment.firebase.databaseURL)
+  // }
 
   list() {
     return this.http.get<Blocos>(this.API);
