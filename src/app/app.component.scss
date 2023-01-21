@@ -1,21 +1,4 @@
-mat-toolbar {
-  min-width: 632px;
-  max-width: 100%;
-}
-
-a {
-  margin: 0 auto;
-  text-decoration: none;
-  color: inherit;
-  font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-}
-
-span {
-  margin-left: 20px;
-}
-
-.title-size{
-  font-size: 22px;
+.header {
+  display: flex;
+  min-width: 100%;
 }

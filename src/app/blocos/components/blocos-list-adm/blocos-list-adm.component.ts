@@ -12,7 +12,7 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./blocos-list-adm.component.scss'],
 })
 export class BlocosListAdmComponent implements OnInit, OnDestroy {
-  blocos$ = this.blocosService.list();
+  blocosFire$ = this.blocosService.listFire();
   queryField = new FormControl();
   value: string = '';
   regionais: string[] = [];
@@ -28,7 +28,7 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
     private routes: ActivatedRoute
   ) {
     this.subscription = this.blocosService
-      .list()
+      .listFire()
       .subscribe((x) => (this.contador = x.length));
 
   }
@@ -38,8 +38,8 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   }
 
   forByRegional(regional: string) {
-    this.blocos$ = this.blocosService
-      .list()
+    this.blocosFire$ = this.blocosService
+      .listFire()
       .pipe(
         map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
       );
@@ -48,8 +48,8 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.blocos$ = this.blocosService
-      .list()
+    this.blocosFire$ = this.blocosService
+      .listFire()
       .pipe(
         map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
       );
@@ -78,7 +78,7 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   onSearch() {
     let value = this.queryField.value;
     if(value && (value = value.trim()) !== ''){
-    this.blocos$ = this.blocosService.list().pipe(
+    this.blocosFire$ = this.blocosService.listFire().pipe(
       map((blocos) => blocos.filter((bloco) =>  bloco.nome.includes(value.toUpperCase())))
     )
     this.counter();
@@ -96,7 +96,7 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   }
 
   counter() {
-    this.blocos$
+    this.blocosFire$
       .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
   }

@@ -2,6 +2,13 @@
   <mat-toolbar color="primary" id="peso-fonte" class="montserrat"
     >BLOCOS
   </mat-toolbar>
+  <mat-grid-list cols="1" rowHeight="15:1">
+    <mat-grid-tile>
+      <button mat-button class="montserrat" (click)="forDate()">
+        LISTA POR DATA DO DESFILE
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
   <div class="toolbar-regionais">
     <mat-grid-list cols="5" rowHeight="6:2">
       <mat-grid-tile *ngFor="let regional of regionais">
@@ -54,22 +61,24 @@
 
   <div *ngIf="contador > 0">
     <div class="container">
-      <div *ngFor="let bloco of blocos$ | async as Blocos">
+      <div *ngFor="let bloco of blocosFire$ | async as Blocos">
         <div class="link">
           <div>
-          <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
-            {{ bloco.nome }}
-          </a>
-          <span id="regional" class="montserrat"> - ({{ bloco.regional }})</span>
-        </div>
-
-            <button mat-button (click)="findOne(bloco.id)">
-              <span style="font-size: 20px" class="material-symbols-outlined">
-                theater_comedy
-              </span>
-            </button>
+            <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
+              {{ bloco.nome }}
+            </a>
+            <span id="regional" class="montserrat">
+              - ({{ bloco.regional }})</span
+            >
           </div>
+
+          <button mat-button (click)="findOne(bloco.id)">
+            <span style="font-size: 20px" class="material-symbols-outlined">
+              theater_comedy
+            </span>
+          </button>
         </div>
       </div>
     </div>
+  </div>
 </mat-card>

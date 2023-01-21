@@ -57,7 +57,7 @@
 
   <div *ngIf="contador > 0">
     <div class="container">
-      <div *ngFor="let bloco of blocos$ | async as Blocos">
+      <div *ngFor="let bloco of blocosFire$ | async as Blocos">
         <div class="link">
           <div>
             <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">

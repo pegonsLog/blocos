@@ -1,14 +1,14 @@
 {
   "targets": {
-    "carnaval-bhtrans-2023": {
+    "carnaval-2023-bhtrans": {
       "hosting": {
         "blocos": [
-          "carnaval-bhtrans-2023"
+          "carnaval-2023-bhtrans"
         ]
       }
     }
   },
   "projects": {
-    "default": "carnaval-bhtrans-2023"
+    "default": "carnaval-2023-bhtrans"
   }
 }

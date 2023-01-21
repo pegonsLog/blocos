@@ -5,7 +5,7 @@ mat-card {
 }
 
 .toolbar-regionais {
-  padding-top: 10px;
+  padding-top: 5px;
   padding-bottom: 5px;
 }
 
@@ -49,7 +49,6 @@ button {
   font-size: 12px;
 }
 
-
 .container {
   height: 455px;
   overflow: auto;
@@ -72,23 +71,24 @@ mat-form-field {
   font-family: Montserrat;
 }
 
-
-#red{
+#red {
   margin-left: 10px;
   font-weight: 500;
-  color: #b34646
+  color: #b34646;
 }
-#peso-fonte{
+#peso-fonte {
   font-weight: 300;
 }
-#peso-fonte-plus{
+#peso-fonte-plus {
   font-size: 30px;
   font-weight: 300;
   color: #fff;
   font-family: Montserrat;
 }
-.button-details{
+.button-details {
   background: lightblue;
   border: none;
 }
-
+mat-toolbar {
+  margin-bottom: 5px;
+}

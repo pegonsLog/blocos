@@ -1,9 +1,9 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BlocosService } from '../blocos.service';
-import { Bloco } from 'src/app/model/bloco';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Bloco } from 'src/app/model/bloco';
+import { BlocosService } from '../blocos.service';
 
 @Component({
   selector: 'app-details',
