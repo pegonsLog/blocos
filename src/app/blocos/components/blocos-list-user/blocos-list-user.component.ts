@@ -2,8 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Blocos } from 'src/app/model/bloco';
+import { map, tap } from 'rxjs/operators';
+import { Blocos, Bloco } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
 @Component({
@@ -23,9 +23,11 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   @Input() role: boolean = false;
 
   constructor(private blocosService: BlocosService, private router: Router) {
-
-    console.log(this.blocosFire$);
-    this.listFire();
+    this.blocosFire$ = this.blocosService.listFire();
+    this.blocosService
+      .listFire()
+      .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
   }
 
   findOne(id: string) {
@@ -36,12 +38,15 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
     this.blocosFire$ = this.blocosService
       .listFire()
       .pipe(
-        map((blocos) =>
-          blocos.filter((bloco: any) => bloco.regional === regional)
+        map((blocos: Blocos) =>
+          blocos.filter((bloco: Bloco) => bloco.regional === regional)
         )
       );
-    this.counter();
+    this.blocosFire$.subscribe(
+      (blocos: Blocos) => (this.contador = blocos.length)
+    );
     this.regional = regional;
+    this.queryField.reset();
   }
 
   forDate() {
@@ -52,10 +57,13 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
     this.blocosFire$ = this.blocosService
       .listFire()
       .pipe(
-        map((blocos) =>
-          blocos.filter((bloco: any) => bloco.regional !== 'GERAL')
+        map((blocos: Blocos) =>
+          blocos.filter((bloco: Bloco) => bloco.regional !== 'GERAL')
         )
       );
+    this.blocosFire$.subscribe(
+      (blocos: Blocos) => (this.contador = blocos.length)
+    );
 
     this.queryField.reset();
     this.regional = 'GERAL';
@@ -64,16 +72,14 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   onSearch() {
     let value = this.queryField.value;
     if (value && (value = value.trim()) !== '') {
-      this.blocosFire$ = this.blocosService
-        .listFire()
-        .pipe(
-          map((blocos) =>
-            blocos.filter((bloco: any) =>
-              bloco.nome.includes(value.toUpperCase())
-            )
+      this.blocosFire$ = this.blocosService.listFire().pipe(
+        map((blocos) =>
+          blocos.filter((bloco: any) =>
+            bloco.nome.includes(value.toUpperCase())
           )
-        );
-      this.counter();
+        ),
+        tap((blocos: Blocos) => (this.contador = blocos.length))
+      );
     }
   }
 
@@ -82,7 +88,8 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   }
 
   counter() {
-    this.blocosFire$
+    this.blocosService
+      .listFire()
       .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
   }
@@ -97,11 +104,6 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   }
 
   listFire() {
-    this.blocosService
-    .listFire()
-    .subscribe((x) => (this.contador = x.length));
-    this.subscription = this.blocosService
-      .listFire()
-      .subscribe((x: any) => (this.blocosFire$ = x));
+    this.blocosService.listFire().subscribe((x: any) => (this.blocosFire$ = x));
   }
 }

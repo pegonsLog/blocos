@@ -51,8 +51,8 @@ export class BlocosService {
   //   return this.http.get<Blocos>(this.API);
   // }
 
-  listFire(): Observable<Blocos> {
-    return this.db.list<Bloco>('blocos').valueChanges();
+  listFire() {
+    return this.db.list<any>('blocos').valueChanges();
   }
 
   findOne(id: string) {
