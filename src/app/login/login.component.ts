@@ -20,8 +20,8 @@ export class LoginComponent {
     private loginService: LoginService
   ) {
     this.form = this.formBuilder.group({
-      user: ['2023'],
-      password: ['2023'],
+      user: ['564'],
+      password: ['123456'],
     });
   }
 

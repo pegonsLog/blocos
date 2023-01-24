@@ -1,50 +1,50 @@
 <mat-card>
   <mat-toolbar color="primary">Detalhes do bloco</mat-toolbar>
   <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item role="listitem"
+    <mat-list>
+      <mat-list-item
         ><strong> Nome do Bloco: </strong> &nbsp;&nbsp;<span
           >{{ bloco.nome }}.</span
         ></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Data do Desfile: </strong>&nbsp;&nbsp;
         <span>{{ bloco.data }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Público: </strong> &nbsp;&nbsp;<span
           >{{ bloco.publico }}.</span
         ></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Hora da Concentração: </strong>&nbsp;&nbsp;
         <span>{{ bloco.horaConc }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Hora do Desfile: </strong>&nbsp;&nbsp;
         <span>{{ bloco.horaDesf }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Hora de Dispersão: </strong>&nbsp;&nbsp;
         <span>{{ bloco.horaDisp }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Local de Concentração: </strong>&nbsp;&nbsp;
         <span>{{ bloco.localConc }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Trajeto do Desfile: </strong>&nbsp;&nbsp;
         <span>{{ "PARA CONSULTAR, ABRA O DOT" }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Local de Dispersão: </strong>&nbsp;&nbsp;
         <span>{{ bloco.localDisp }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Responsável: </strong>&nbsp;&nbsp;
         <span>{{ bloco.responsavel }}.</span></mat-list-item
       >
-      <mat-list-item role="listitem"
+      <mat-list-item
         ><strong>Telefone: </strong> &nbsp;&nbsp;<span
           >{{ bloco.telefone }}.</span
         ></mat-list-item
@@ -54,11 +54,7 @@
       <button mat-raised-button class="montserrat" color="primary">
         <a href="{{ bloco.linkMyMaps }}" target="_blank"> Abrir MyMaps</a>
       </button>
-      <button
-        mat-raised-button
-        class="montserrat"
-        color="primary"
-      >
+      <button mat-raised-button class="montserrat" color="primary">
         <a href="{{ bloco.linkDOT }}" target="_blank"> Abrir DOT</a>
       </button>
       <button mat-raised-button class="montserrat" (click)="onCancel()">

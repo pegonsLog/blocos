@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { Observable } from 'rxjs';
+import { first, map, Observable, of, Subscription, take } from 'rxjs';
 import { Bloco, Blocos } from '../../model/bloco';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlocosService {
-
   private readonly REGIONAIS = [
     'BARREIRO',
     'OESTE',
@@ -45,18 +43,22 @@ export class BlocosService {
     '26/02',
   ];
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase) {}
+  subscription: Subscription = new Subscription();
+  blocos: Blocos = [];
 
-  // list() {
-  //   return this.http.get<Blocos>(this.API);
-  // }
+  constructor(private http: HttpClient, private db: AngularFireDatabase) {}
 
   listFire() {
     return this.db.list<any>('blocos').valueChanges();
   }
+  listFireDate(date: string) {
+    return this.db.list<any>('blocos').valueChanges()
+    .pipe(
+    map((blocos: Blocos) => blocos.filter((bloco: Bloco) => bloco.data === date)));
+  }
 
   findOne(id: string) {
-    return this.http.get<Bloco>(`${''}/${id}`);
+    return this.db.object('blocos/' + id).valueChanges();
   }
 
   regionais() {

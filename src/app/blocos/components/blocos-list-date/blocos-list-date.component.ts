@@ -20,17 +20,13 @@ export class BlocosListDateComponent implements OnInit {
     },
   };
 
-  teste: any;
-
   constructor(
     private blocosService: BlocosService,
     private router: Router,
     private location: Location
   ) {
     this.datas = this.blocosService.datas();
-    this.subscription = this.blocosService
-      .listFire()
-      .subscribe((x) => (this.contador = x.length));
+
   }
 
   forDate(data: string) {

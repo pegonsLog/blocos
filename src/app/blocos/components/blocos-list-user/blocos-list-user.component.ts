@@ -20,7 +20,6 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   contador: number = 0;
   bloco: any;
   subscription: Subscription = new Subscription();
-  @Input() role: boolean = false;
 
   constructor(private blocosService: BlocosService, private router: Router) {
     this.blocosFire$ = this.blocosService.listFire();
@@ -46,7 +45,6 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
       (blocos: Blocos) => (this.contador = blocos.length)
     );
     this.regional = regional;
-    this.queryField.reset();
   }
 
   forDate() {
@@ -92,11 +90,6 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
       .listFire()
       .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
-  }
-
-  admDefinition(x: boolean) {
-    this.role = x;
-    console.log(x);
   }
 
   ngOnDestroy(): void {

@@ -23,28 +23,37 @@
         >
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" style="background-color: white">
-        <button mat-raised-button class="montserrat" id="voltar" (click)="goBack()">Cancelar</button>
+        <button
+          mat-raised-button
+          class="montserrat"
+          id="voltar"
+          (click)="goBack()"
+        >
+          Cancelar
+        </button>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div class="container" *ngIf="contador > 0">
-    <div *ngFor="let bloco of blocosFire$ | async as Blocos">
-      <div class="link">
-        <div>
-          <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
-            {{ bloco.nome }}
-          </a>
-          <span id="regional" class="montserrat">
-            - ({{ bloco.regional }})</span
-          >
-        </div>
+  <!-- <div *ngIf="contador > 0"> -->
+    <div class="container">
+      <div *ngFor="let bloco of blocosFire$ | async as Blocos">
+        <div class="link">
+          <div>
+            <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
+              {{ bloco.nome }}
+            </a>
+            <span id="regional" class="montserrat">
+              - ({{ bloco.regional }})</span
+            >
+          </div>
 
-        <button mat-button (click)="findOne(bloco.id)">
-          <span style="font-size: 20px" class="material-symbols-outlined">
-            theater_comedy
-          </span>
-        </button>
+          <button mat-button (click)="findOne(bloco.id)">
+            <span style="font-size: 20px" class="material-symbols-outlined">
+              theater_comedy
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </mat-card>

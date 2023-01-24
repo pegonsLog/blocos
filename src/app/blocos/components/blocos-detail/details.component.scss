@@ -1,15 +1,10 @@
 mat-card {
-  width: 50%;
+  width: 40%;
   margin: 1em auto;
 }
 
 .full-width {
   width: 100%;
-}
-
-.min-width {
-  width: 100%;
-  min-width: 150px;
 }
 
 mat-card-actions {
@@ -19,16 +14,15 @@ mat-card-actions {
 
 mat-toolbar,
 button {
-  margin-bottom: 1em;
-  font-family: "Montserrat";
+  font-family: Montserrat;
 }
 mat-list-item {
-  font-family: "Montserrat";
+  font-family: Montserrat;
 }
 a{
   text-decoration: none;
   color: inherit;
 }
 span{
-  font-size: 14px;
+  font-size: 12px;
 }

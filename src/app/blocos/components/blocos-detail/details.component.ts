@@ -1,8 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Bloco } from 'src/app/model/bloco';
+import { map, Subscription } from 'rxjs';
+import { Bloco, Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit, OnDestroy {
-
   bloco: Bloco = {
     id: '',
     nome: '',
@@ -26,8 +25,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     localConc: '',
     localDisp: '',
     linkDOT: '',
-    linkMyMaps: ''
-
+    linkMyMaps: '',
   };
   subscription: Subscription = new Subscription();
 
@@ -36,18 +34,18 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private routes: ActivatedRoute,
     private location: Location
   ) {
-   }
-
-  ngOnInit(): void {
     const id = this.routes.snapshot.params['id'];
-   this.subscription = this.blocosService.findOne(id).subscribe((bloco: Bloco) => this.bloco = bloco);
+    console.log(id);
+    this.subscription = this.blocosService.findOne(id).subscribe((x: any) => this.bloco = x);
   }
+
+  ngOnInit(): void {}
 
   onCancel() {
     this.location.back();
   }
 
   ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

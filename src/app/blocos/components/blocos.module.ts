@@ -12,6 +12,6 @@ import { BlocosListDateRegionalComponent } from './blocos-list-date-regional/blo
 @NgModule({
   declarations: [BlocosListAdmComponent, DetailsComponent, BlocosListUserComponent, BlocosListDateComponent, BlocosListDateRegionalComponent],
   imports: [CommonModule, ComponentsRoutingModule, AngularMaterialModule, FormsModule, ReactiveFormsModule],
-  exports: [],
+  exports: [BlocosListAdmComponent, DetailsComponent, BlocosListUserComponent, BlocosListDateComponent, BlocosListDateRegionalComponent],
 })
 export class BlocosModule {}
