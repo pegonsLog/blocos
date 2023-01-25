@@ -32,6 +32,7 @@ export class BlocosFormComponent {
   subscription: Subscription = new Subscription();
   verificador: boolean = false;
   nomeFormulario: string = '';
+  key: string = '';
 
   constructor(
     private blocoFormService: BlocoFormService,
@@ -40,10 +41,12 @@ export class BlocosFormComponent {
     private route: ActivatedRoute,
     private location: Location
   ) {
-    const bloco: Bloco = this.route.snapshot.data['bloco'];
-    if (bloco.id !== '') {
+    const bloco: any = this.route.snapshot.data['bloco'];
+
+    if (bloco) {
       this.verificador = true;
       this.nomeFormulario="ALTERAR";
+      this.key = bloco.key;
     } else {
       this.verificador = false;
       this.nomeFormulario="ADICIONAR";
@@ -63,6 +66,7 @@ export class BlocosFormComponent {
       localDisp: bloco.localDisp,
       linkDOT: bloco.linkDOT,
       linkMyMaps: bloco.linkMyMaps,
+
     });
   }
 
@@ -72,15 +76,10 @@ export class BlocosFormComponent {
 
   onSubmit() {
     if (this.verificador) {
-      this.blocoFormService.update(this.form.value).subscribe({
-        next: () => this.onSuccess(),
-        error: () => this.onError(),
-      });
+      this.blocoFormService.update(this.key, this.form.value).then();
     } else {
-      this.blocoFormService.save(this.form.value).subscribe({
-        next: () => this.onSuccess(),
-        error: () => this.onError(),
-      });
+      this.blocoFormService.add(this.form.value).then((x:any) => console.log(x.key));
+
     }
     this.onClear();
   }

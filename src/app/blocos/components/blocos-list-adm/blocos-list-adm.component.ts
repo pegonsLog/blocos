@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
@@ -27,32 +27,34 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
     private router: Router,
     private routes: ActivatedRoute
   ) {
-    this.subscription = this.blocosService
-      .listFire()
-      .subscribe((x) => (this.contador = x.length));
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+    );
 
+      this.blocosService
+      .listFire()
+      .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
+      .subscribe();
   }
 
-  findOne(id: string) {
-    this.router.navigate(['blocos/details', id]);
+  findOne(key: string) {
+    this.router.navigate(['blocos/details', key]);
   }
 
   forByRegional(regional: string) {
-    this.blocosFire$ = this.blocosService
-      .listFire()
-      .pipe(
-        map((blocos) => blocos.filter((bloco) => bloco.regional === regional))
-      );
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((blocos) => blocos.filter((bloco) => bloco.regional === regional)),
+      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+    );
     this.counter();
     this.regional = regional;
   }
 
   load() {
-    this.blocosFire$ = this.blocosService
-      .listFire()
-      .pipe(
-        map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL'))
-      );
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL')),
+      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+    );
     this.counter();
     this.queryField.reset();
     this.counter();
@@ -63,36 +65,29 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
     this.router.navigate(['blocos/forms/new']);
   }
 
-  onEdit(id: string) {
-    this.router.navigate(['blocos/forms/edit', id]);
+  onEdit(key: string) {
+    this.router.navigate(['blocos/forms/edit', key]);
   }
 
-  onDelete(id: string) {
-    this.subscription = this.blocosService
-      .delete(id)
-      .subscribe(() => console.log('Bloco deletado com sucesso!!'));
-    this.load();
-    this.counter();
+  onDelete(key: string) {
+    this.blocosService.delete(key).then();
   }
 
   onSearch() {
     let value = this.queryField.value;
-    if(value && (value = value.trim()) !== ''){
-    this.blocosFire$ = this.blocosService.listFire().pipe(
-      map((blocos) => blocos.filter((bloco) =>  bloco.nome.includes(value.toUpperCase())))
-    )
-    this.counter();
+    if (value && (value = value.trim()) !== '') {
+      this.blocosFire$ = this.blocosService.listFire().pipe(
+        map((blocos) =>
+          blocos.filter((bloco) => bloco.nome.includes(value.toUpperCase()))
+        ),
+        map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+      );
+      this.counter();
     }
   }
 
   ngOnInit(): void {
     this.regionais = this.blocosService.regionais();
-    // this.queryField.valueChanges.pipe(
-    //   map(value => value.trim()),
-    //   filter(value => value.length > 1),
-    //   distinctUntilChanged(),
-    //   tap(value => console.log(value)))
-    //   .subscribe();
   }
 
   counter() {

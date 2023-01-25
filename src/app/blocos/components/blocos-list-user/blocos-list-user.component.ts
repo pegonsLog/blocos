@@ -22,25 +22,29 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   constructor(private blocosService: BlocosService, private router: Router) {
-    this.blocosFire$ = this.blocosService.listFire();
-    this.blocosService
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+    );
+
+      this.blocosService
       .listFire()
       .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
   }
 
-  findOne(id: string) {
-    this.router.navigate(['blocos/details', id]);
+  findOne(key: string) {
+    this.router.navigate(['blocos/details', key]);
   }
 
   forByRegional(regional: string) {
-    this.blocosFire$ = this.blocosService
-      .listFire()
-      .pipe(
-        map((blocos: Blocos) =>
-          blocos.filter((bloco: Bloco) => bloco.regional === regional)
-        )
-      );
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((blocos: Blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.regional === regional)
+      ),
+      map((result) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      )
+    );
     this.blocosFire$.subscribe(
       (blocos: Blocos) => (this.contador = blocos.length)
     );
@@ -52,13 +56,14 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   }
 
   load() {
-    this.blocosFire$ = this.blocosService
-      .listFire()
-      .pipe(
-        map((blocos: Blocos) =>
-          blocos.filter((bloco: Bloco) => bloco.regional !== 'GERAL')
-        )
-      );
+    this.blocosFire$ = this.blocosService.listFire().pipe(
+      map((blocos: Blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.regional !== 'GERAL')
+      ),
+      map((result) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      )
+    );
     this.blocosFire$.subscribe(
       (blocos: Blocos) => (this.contador = blocos.length)
     );
@@ -76,6 +81,9 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
             bloco.nome.includes(value.toUpperCase())
           )
         ),
+        map((result) =>
+          result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+        ),
         tap((blocos: Blocos) => (this.contador = blocos.length))
       );
     }
@@ -88,7 +96,12 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   counter() {
     this.blocosService
       .listFire()
-      .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
+      .pipe(
+        map((result) =>
+          result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+        ),
+        map((blocos: Blocos) => (this.contador = blocos.length))
+      )
       .subscribe();
   }
 

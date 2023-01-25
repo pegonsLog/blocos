@@ -11,8 +11,8 @@ export class BlocoResolver implements Resolve<Bloco> {
   constructor(private blocoFormService: BlocoFormService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Bloco> {
-    if (route.params && route.params['id']) {
-      return this.blocoFormService.loadById(route.params['id']);
+    if (route.params && route.params['key']) {
+      return this.blocoFormService.loadById(route.params['key']);
     }
     return of({
       id: '',

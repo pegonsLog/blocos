@@ -18,7 +18,7 @@ const routes: Routes = [
         (m) => m.BlocoFormModule
       ),
   },
-  { path: 'details/:id', component: DetailsComponent },
+  { path: 'details/:key', component: DetailsComponent },
 ];
 
 @NgModule({

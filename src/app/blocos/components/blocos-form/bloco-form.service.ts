@@ -1,35 +1,38 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { map, Observable } from 'rxjs';
 import { Bloco } from 'src/app/model/bloco';
-import { first } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BlocoFormService {
+  blocos;
+  itemsRef: AngularFireList<any>;
+  itemsFire: Observable<any[]>;
 
-  private readonly API = 'http://localhost:3000/blocos';
-  //private readonly API = `${environment.firebase}blocos`;
+  constructor(private db: AngularFireDatabase) {
+    this.blocos = this.db.list('blocos/').valueChanges();
 
-  constructor(private http: HttpClient) { }
-
-
-  loadById(id: number) {
-    return this.http.get<Bloco>(`${this.API}/${id}`).pipe(first());
-
-  }
-  save(bloco: Partial<Bloco>) {
-
-    if(bloco.id){
-      return this.http.put<Bloco>(`${this.API}/${bloco.id}`, bloco).pipe(first());
-    }
-    return this.http.post<Bloco>(this.API, bloco).pipe(first());
+    this.itemsRef = this.db.list('blocos/');
+    this.itemsFire = this.itemsRef
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
   }
 
-  update(bloco: Partial<Bloco>) {
-    return this.http.patch<Bloco>(`${this.API}/${bloco.id}`, bloco).pipe(first());
+  loadById(key: string) {
+    return this.db.object<any>('blocos/' + key).valueChanges();
   }
 
+  add(bloco: Partial<Bloco>) {
+    return this.db.list('blocos/').push(bloco);
+  }
 
+  update(key: string, bloco: Partial<Bloco>) {
+   return this.db.object('blocos/' + key).update(bloco);
+  }
 }

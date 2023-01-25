@@ -66,17 +66,17 @@
             <span id="regional" class="montserrat"> - ({{ bloco.regional }})</span>
           </div>
           <div>
-            <button class="button-details" (click)="findOne(bloco.id)">
+            <button class="button-details" (click)="findOne(bloco.key)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 theater_comedy
               </span>
             </button>
-            <button class="button-details" (click)="onEdit(bloco.id)">
+            <button class="button-details" (click)="onEdit(bloco.key)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 edit
               </span>
             </button>
-            <button class="button-details" (click)="onDelete(bloco.id)">
+            <button class="button-details" (click)="onDelete(bloco.key)">
               <span style="font-size: 20px" class="material-symbols-outlined">
                 delete
               </span>

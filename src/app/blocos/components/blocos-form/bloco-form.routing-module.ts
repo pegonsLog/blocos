@@ -11,7 +11,7 @@ const routes: Routes = [
     resolve: { bloco: BlocoResolver },
   },
   {
-    path: 'edit/:id',
+    path: 'edit/:key',
     component: BlocosFormComponent,
     resolve: {  bloco: BlocoResolver },
   },

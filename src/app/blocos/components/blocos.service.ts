@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { first, map, Observable, of, Subscription, take } from 'rxjs';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
+import { identity, map, Observable, Subscription } from 'rxjs';
 import { Bloco, Blocos } from '../../model/bloco';
 
 @Injectable({
@@ -45,20 +47,36 @@ export class BlocosService {
 
   subscription: Subscription = new Subscription();
   blocos: Blocos = [];
+  items;
+  itemsRef: AngularFireList<any>;
+  itemsFire: Observable<any[]>;
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) {
+    this.items = this.db.list<any>('blocos').valueChanges();
+
+    this.itemsRef = this.db.list('blocos');
+    this.itemsFire = this.itemsRef
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
+  }
 
   listFire() {
-    return this.db.list<any>('blocos').valueChanges();
+    return this.itemsFire;
   }
   listFireDate(date: string) {
-    return this.db.list<any>('blocos').valueChanges()
-    .pipe(
-    map((blocos: Blocos) => blocos.filter((bloco: Bloco) => bloco.data === date)));
+    return this.items.pipe(
+      map((blocos: Blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.data === date)
+      )
+    );
   }
 
-  findOne(id: string) {
-    return this.db.object('blocos/' + id).valueChanges();
+  findOne(key: string) {
+    return this.db.object<Bloco>('blocos/' + key).valueChanges();
   }
 
   regionais() {
@@ -69,7 +87,8 @@ export class BlocosService {
     return this.DATAS;
   }
 
-  delete(id: string) {
-    return this.http.delete<Bloco>(`${''}/${id}`);
+  delete(key: string) {
+
+   return this.db.object(`blocos/${key}`).remove();
   }
 }

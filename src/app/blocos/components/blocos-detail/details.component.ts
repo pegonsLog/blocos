@@ -34,9 +34,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private routes: ActivatedRoute,
     private location: Location
   ) {
-    const id = this.routes.snapshot.params['id'];
-    console.log(id);
-    this.subscription = this.blocosService.findOne(id).subscribe((x: any) => this.bloco = x);
+    const key = this.routes.snapshot.params['key'];
+    console.log(key);
+    this.subscription = this.blocosService.findOne(key).subscribe((x: any) => this.bloco = x);
   }
 
   ngOnInit(): void {}

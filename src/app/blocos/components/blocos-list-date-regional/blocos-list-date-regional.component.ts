@@ -30,12 +30,15 @@ export class BlocosListDateRegionalComponent implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     this.data = navigation?.extras?.state?.['value'];
 
-    this.blocosFire$ = this.blocosService.listFireDate(this.data);
-
-      this.blocosService
+    (this.blocosFire$ = this.blocosService
       .listFireDate(this.data)
-      .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
-      .subscribe();
+      .pipe(
+        map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+      )),
+      this.blocosService
+        .listFireDate(this.data)
+        .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
+        .subscribe();
   }
 
   findOne(id: string) {
@@ -43,14 +46,13 @@ export class BlocosListDateRegionalComponent implements OnInit {
   }
 
   forByRegional(regional: string) {
-    this.blocosFire$ = this.blocosService
-      .listFireDate(this.data)
-      .pipe(
-        map((blocos) =>
-          blocos.filter((bloco: Bloco) => bloco.regional === regional)
-        ),
-        tap((blocos: Blocos) => (this.contador = blocos.length))
-      );
+    this.blocosFire$ = this.blocosService.listFireDate(this.data).pipe(
+      map((blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.regional === regional)
+      ),
+      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome))),
+      tap((blocos: Blocos) => (this.contador = blocos.length))
+    );
   }
 
   forDateList(data: string) {
@@ -64,30 +66,12 @@ export class BlocosListDateRegionalComponent implements OnInit {
       .subscribe((blocos: any) => (this.blocosFire$ = blocos));
   }
 
-  // load() {
-  //   this.blocos$ = this.blocosService
-  //     .list()
-  //     .pipe(
-  //       map((blocos) => blocos.filter((bloco) => bloco.data !== 'GERAL'))
-  //     );
-
-  //   this.queryField.reset();
-  //   this.data = 'GERAL';
-  // }
-
   goBack() {
     this.location.back();
   }
 
   ngOnInit(): void {
     this.regionais = this.blocosService.regionais();
-
-  }
-
-  counter() {
-    // this.bloco
-    //   .pipe(map((blocos: Blocos) => (this.contador = blocos.length)))
-    //   .subscribe();
   }
 
   ngOnDestroy(): void {
