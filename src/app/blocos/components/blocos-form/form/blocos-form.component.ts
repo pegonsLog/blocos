@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Bloco } from 'src/app/model/bloco';
 import { BlocoFormService } from '../bloco-form.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blocos-form',
@@ -29,7 +28,6 @@ export class BlocosFormComponent {
     linkDOT: [''],
     linkMyMaps: [''],
   });
-  subscription: Subscription = new Subscription();
   verificador: boolean = false;
   nomeFormulario: string = '';
   key: string = '';
@@ -41,12 +39,13 @@ export class BlocosFormComponent {
     private route: ActivatedRoute,
     private location: Location
   ) {
-    const bloco: any = this.route.snapshot.data['bloco'];
 
-    if (bloco) {
+    const bloco: Bloco = this.route.snapshot.data['bloco'];
+    this.key = this.route.snapshot.params['key'];
+
+    if (bloco.nome) {
       this.verificador = true;
       this.nomeFormulario="ALTERAR";
-      this.key = bloco.key;
     } else {
       this.verificador = false;
       this.nomeFormulario="ADICIONAR";
@@ -76,10 +75,9 @@ export class BlocosFormComponent {
 
   onSubmit() {
     if (this.verificador) {
-      this.blocoFormService.update(this.key, this.form.value).then();
+      this.blocoFormService.update(this.key, this.form.value);
     } else {
-      this.blocoFormService.add(this.form.value).then((x:any) => console.log(x.key));
-
+      this.blocoFormService.add(this.form.value);
     }
     this.onClear();
   }

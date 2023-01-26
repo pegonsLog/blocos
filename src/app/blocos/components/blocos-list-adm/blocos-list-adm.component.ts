@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
@@ -12,7 +16,7 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./blocos-list-adm.component.scss'],
 })
 export class BlocosListAdmComponent implements OnInit, OnDestroy {
-  blocosFire$ = this.blocosService.listFire();
+  blocosFire$: Observable<any[]>;
   queryField = new FormControl();
   value: string = '';
   regionais: string[] = [];
@@ -21,17 +25,24 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   bloco: any;
   subscription: Subscription = new Subscription();
   blocosPesquisados: Blocos = [];
+  itemsRef: AngularFireList<any>;
 
   constructor(
     private blocosService: BlocosService,
     private router: Router,
-    private routes: ActivatedRoute
+    private db: AngularFireDatabase
   ) {
-    this.blocosFire$ = this.blocosService.listFire().pipe(
-      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+    this.itemsRef = this.db.list('blocos/');
+    this.blocosFire$ = this.itemsRef.snapshotChanges().pipe(
+      map((changes) =>
+        changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+      ),
+      map((result: any) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      )
     );
 
-      this.blocosService
+    this.blocosService
       .listFire()
       .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
@@ -53,7 +64,9 @@ export class BlocosListAdmComponent implements OnInit, OnDestroy {
   load() {
     this.blocosFire$ = this.blocosService.listFire().pipe(
       map((blocos) => blocos.filter((bloco) => bloco.regional !== 'GERAL')),
-      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+      map((result) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      )
     );
     this.counter();
     this.queryField.reset();

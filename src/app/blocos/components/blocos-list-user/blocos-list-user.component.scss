@@ -1,7 +1,5 @@
 mat-card {
   margin: 0 auto;
-  min-width: 600px;
-  max-width: 600px;
 }
 
 .toolbar-regionais {
@@ -68,7 +66,7 @@ mat-form-field {
 }
 
 .montserrat {
-  font-family: Montserrat;
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 
 #red {
@@ -83,12 +81,18 @@ mat-form-field {
   font-size: 30px;
   font-weight: 300;
   color: #fff;
-  font-family: Montserrat;
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 .button-details {
-  background: lightblue;
+  background-color: lightblue;
   border: none;
 }
 mat-toolbar {
   margin-bottom: 5px;
+}
+.button-hover{
+transition: 0.5;
+}
+.button-hover:hover{
+  background-color: lightblue;
 }

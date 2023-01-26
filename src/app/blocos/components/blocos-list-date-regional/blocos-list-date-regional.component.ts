@@ -1,5 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, Subscription, tap } from 'rxjs';
@@ -21,24 +25,40 @@ export class BlocosListDateRegionalComponent implements OnInit {
   subscription: Subscription = new Subscription();
   desfile: any = null;
   blocosFire$: Observable<Blocos>;
+  itemsRef: AngularFireList<any>;
 
   constructor(
     private blocosService: BlocosService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private db: AngularFireDatabase
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.data = navigation?.extras?.state?.['value'];
 
-    (this.blocosFire$ = this.blocosService
-      .listFireDate(this.data)
-      .pipe(
-        map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
-      )),
-      this.blocosService
-        .listFireDate(this.data)
-        .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
-        .subscribe();
+    this.itemsRef = this.db.list('blocos/');
+    this.blocosFire$ = this.itemsRef.snapshotChanges().pipe(
+      map((changes) =>
+        changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+      ),
+      map((blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.data === this.data)
+      ),
+      map((result: any) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      ),
+      tap((blocos: Blocos) => (this.contador = blocos.length))
+    );
+
+    // this.blocosService
+    //   .listFireDate(this.data)
+    //   .pipe(
+    //     map((blocos) =>
+    //       blocos.filter((bloco: Bloco) => bloco.data === this.data)
+    //     ),
+    //     tap((blocos: Blocos) => (this.contador = blocos.length))
+    //   )
+    //   .subscribe();
   }
 
   findOne(id: string) {

@@ -51,13 +51,13 @@
       >
     </mat-list>
     <mat-card-actions>
-      <button mat-raised-button class="montserrat" color="primary">
+      <button class="button-hover montserrat" mat-raised-button color="primary">
         <a href="{{ bloco.linkMyMaps }}" target="_blank"> Abrir MyMaps</a>
       </button>
-      <button mat-raised-button class="montserrat" color="primary">
+      <button class="button-hover montserrat" mat-raised-button color="primary">
         <a href="{{ bloco.linkDOT }}" target="_blank"> Abrir DOT</a>
       </button>
-      <button mat-raised-button class="montserrat" (click)="onCancel()">
+      <button class="montserrat" mat-raised-button (click)="onCancel()">
         Voltar
       </button>
     </mat-card-actions>

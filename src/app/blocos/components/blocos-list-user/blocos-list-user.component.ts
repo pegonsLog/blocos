@@ -1,9 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AngularFireDatabase,
+  AngularFireList
+} from '@angular/fire/compat/database';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Blocos, Bloco } from 'src/app/model/bloco';
+import { Bloco, Blocos } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
 @Component({
@@ -12,21 +16,31 @@ import { BlocosService } from '../blocos.service';
   styleUrls: ['./blocos-list-user.component.scss'],
 })
 export class BlocosListUserComponent implements OnInit, OnDestroy {
-  blocosFire$ = this.blocosService.listFire();
+  blocosFire$: Observable<any[]>;
   queryField = new FormControl();
   value: string = '';
   regionais: string[] = [];
   regional: string = 'GERAL';
   contador: number = 0;
   bloco: any;
-  subscription: Subscription = new Subscription();
+  itemsRef: AngularFireList<any>;
 
-  constructor(private blocosService: BlocosService, private router: Router) {
-    this.blocosFire$ = this.blocosService.listFire().pipe(
-      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome)))
+  constructor(
+    private blocosService: BlocosService,
+    private router: Router,
+    private db: AngularFireDatabase
+  ) {
+    this.itemsRef = this.db.list('blocos/');
+    this.blocosFire$ = this.itemsRef.snapshotChanges().pipe(
+      map((changes) =>
+        changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+      ),
+      map((result: any) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      )
     );
 
-      this.blocosService
+    this.blocosService
       .listFire()
       .pipe(tap((blocos: Blocos) => (this.contador = blocos.length)))
       .subscribe();
@@ -105,9 +119,7 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 
   listFire() {
     this.blocosService.listFire().subscribe((x: any) => (this.blocosFire$ = x));

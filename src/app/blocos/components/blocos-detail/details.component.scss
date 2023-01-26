@@ -14,10 +14,10 @@ mat-card-actions {
 
 mat-toolbar,
 button {
-  font-family: Montserrat;
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 mat-list-item {
-  font-family: Montserrat;
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 a{
   text-decoration: none;
@@ -26,3 +26,9 @@ a{
 span{
   font-size: 12px;
 }
+.button-hover{
+  transition: 0.5;
+  }
+  .button-hover:hover{
+    background-color: #0a10cf;
+  }
