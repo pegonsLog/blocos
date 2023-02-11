@@ -19,7 +19,12 @@
       <button mat-button class="montserrat" (click)="load()">GERAL</button>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" id="teste">
-      <button mat-button class="montserrat" style="color:#b34646; font-weight: 400;" (click)="forDate()">
+      <button
+        mat-button
+        class="montserrat"
+        style="color: #b34646; font-weight: 400"
+        (click)="forDate()"
+      >
         POR DATA
       </button>
     </mat-grid-tile>
@@ -65,9 +70,9 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <div *ngIf="contador > 0">
-    <div class="container">
-      <div *ngFor="let bloco of blocosFire$ | async as Blocos">
+  <div class="container">
+    <div *ngIf="blocosFire$ | async; else loading">
+    <div *ngFor="let bloco of blocosFire$ | async as Blocos">
         <div class="link">
           <div>
             <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
@@ -87,4 +92,9 @@
       </div>
     </div>
   </div>
+  <ng-template #loading>
+    <div id="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </mat-card>
