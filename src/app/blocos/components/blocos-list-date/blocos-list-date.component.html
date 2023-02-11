@@ -1,18 +1,18 @@
 <mat-card class="mat-elevation-z8">
-  <mat-toolbar color="primary" id="peso-fonte" class="montserrat"
-    >DATAS
+  <mat-toolbar color="primary" id="peso-fonte">
+    <span>CARNAVAL 2023 - Datas dos Desfiles</span>
   </mat-toolbar>
   <div class="toolbar-regionais">
-    <mat-grid-list cols="5" rowHeight="6:2">
+    <mat-grid-list cols="4" rowHeight="5:2">
       <mat-grid-tile *ngFor="let data of datas">
-        <button mat-button class="montserrat" (click)="forDate(data)">
+        <button mat-button (click)="forDate(data)">
           {{ data }}
         </button>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" style="background-color: white">
         <button
           mat-raised-button
-          class="montserrat"
+          color="primary"
           (click)="goBack()"
           id="voltar"
         >

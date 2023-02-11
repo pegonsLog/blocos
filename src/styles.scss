@@ -20,10 +20,12 @@ $my-theme: mat.define-light-theme(
 
 @include mat.all-component-themes($my-theme);
 
+* {
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+}
 html,
 body {
-  height: 100%;
-  padding-bottom: 500px;
+  height: 60%;
 }
 
 body {

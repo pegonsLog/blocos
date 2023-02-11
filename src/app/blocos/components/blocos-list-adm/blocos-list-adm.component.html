@@ -6,7 +6,7 @@
     </button>
   </mat-toolbar>
   <div class="toolbar-regionais">
-    <mat-grid-list cols="5" rowHeight="6:2">
+    <mat-grid-list cols="5">
       <mat-grid-tile *ngFor="let regional of regionais">
         <button mat-button class="montserrat" (click)="forByRegional(regional)">
           {{ regional }}
@@ -15,7 +15,7 @@
     </mat-grid-list>
   </div>
   <div>
-    <mat-grid-list cols="5" rowHeight="6:2">
+    <mat-grid-list cols="5">
       <mat-grid-tile [colspan]="1">
         <button mat-button class="montserrat" (click)="load()">GERAL</button>
       </mat-grid-tile>
@@ -33,7 +33,7 @@
   </div>
   <div class="pesquisar">
     <mat-form-field>
-      <mat-label>Digite parte do nome do bloco</mat-label>
+      <mat-label>Buscar bloco pelo nome...</mat-label>
       <input
         matInput
         type="text"
@@ -51,8 +51,8 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <button mat-raised-button (click)="onSearch()">Pesquisar</button>
-    <button mat-raised-button (click)="load()">Limpar</button>
+    <button mat-raised-button color="primary" (click)="onSearch()">Pesquisar</button>
+    <button mat-raised-button color="primary" (click)="load()">Limpar</button>
   </div>
 
   <div *ngIf="contador > 0">

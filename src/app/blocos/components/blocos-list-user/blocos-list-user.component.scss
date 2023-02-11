@@ -1,10 +1,42 @@
-mat-card {
-  margin: 0 auto;
+@media screen and (mix-width: 0px) and (max-width: 800px) {
+  mat-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .regionais {
+    color: teal;
+    background: lightblue;
+    margin-bottom: 2px;
+    display: inline-block;
+  }
+  .informacoes {
+    color: teal;
+    background: lightblue;
+    margin-bottom: 2px;
+    font-size: 0.5rem;
+  }
 }
-
-.toolbar-regionais {
-  padding-top: 5px;
-  padding-bottom: 5px;
+@media (min-width: 800px) and (max-width: 1000px) {
+  mat-card {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .regionais {
+    color: teal;
+    background: lightblue;
+    display: inline-block;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1900px) {
+  mat-card {
+    width: 40%;
+    margin: 0 auto;
+  }
+  .regionais {
+    color: teal;
+    background: lightblue;
+    display: inline-block;
+  }
 }
 
 a {
@@ -16,56 +48,62 @@ a {
 }
 
 .title-size {
-  font-size: x-large;
+  font-size: 1.2rem;
 }
 
 .link {
   background: lightblue;
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 5px;
-  height: 40px;
+  height: 38px;
   color: teal;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 mat-label {
-  color: #cccccc;
+  color: #7d7c7c;
 }
 
 span {
   color: teal;
 }
 
-mat-grid-tile {
+.regionais {
   color: teal;
   background: lightblue;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
   color: teal;
-  font-size: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: right;
 }
 
 .container {
-  height: 455px;
+  height: 300px;
   overflow: auto;
 }
 
 .pesquisar {
-  margin: auto;
-  padding-right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.75rem;
 }
+
 mat-form-field {
   padding-top: 15px;
-  width: 70%;
+  margin-top: 5px;
+  width: 90%;
 }
 
 .montserrat {
+  font-size: 0.9rem;
+  font-weight: 300;
   font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -73,12 +111,17 @@ mat-form-field {
   margin-left: 10px;
   font-weight: 500;
   color: #b34646;
+  font-size: 0.75rem;
 }
 #peso-fonte {
+  color: white;
+  display: flex;
+  align-items: center;
   font-weight: 300;
+  font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 #peso-fonte-plus {
-  font-size: 30px;
+  font-size: 0.75rem;
   font-weight: 300;
   color: #fff;
   font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
@@ -88,11 +131,41 @@ mat-form-field {
   border: none;
 }
 mat-toolbar {
+  display: flex;
+  justify-content: center;
   margin-bottom: 5px;
 }
-.button-hover{
-transition: 0.5;
-}
-.button-hover:hover{
+#button-hover {
+  transition: 0.5;
+  border-radius: 5%;
   background-color: lightblue;
+  width: 9em;
+  font-size: 0.8rem;
+}
+#button-hover:hover {
+  background-color: lightblue;
+}
+
+.title {
+  color: white;
+}
+.center-card {
+  justify-content: center;
+  align-items: center;
+}
+
+#teste {
+  background-color: lightblue;
+}
+.informacoes {
+  color: teal;
+  margin-bottom: 2px;
+}
+#borda-direita {
+  border-right: 2px solid white;
+}
+
+#botoes {
+  display: flex;
+  justify-content: right;
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFireDatabase,
-  AngularFireList,
+  AngularFireList
 } from '@angular/fire/compat/database';
-import { identity, map, Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { Bloco, Blocos } from '../../model/bloco';
 
 @Injectable({
@@ -15,12 +15,12 @@ export class BlocosService {
     'OESTE',
     'NOROESTE',
     'PAMPULHA',
+    'CENTRO',
     'SUL',
     'LESTE',
     'NORDESTE',
-    'NORTE',
     'VENDA NOVA',
-    'CENTRO',
+    'NORTE',
   ];
 
   private readonly DATAS = [

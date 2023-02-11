@@ -1,8 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Subscription } from 'rxjs';
-import { Bloco, Blocos } from 'src/app/model/bloco';
+import { Subscription } from 'rxjs';
+import { Bloco } from 'src/app/model/bloco';
 import { BlocosService } from '../blocos.service';
 
 @Component({

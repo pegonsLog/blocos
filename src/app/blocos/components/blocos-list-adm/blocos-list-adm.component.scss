@@ -1,7 +1,14 @@
-mat-card {
-  margin: 0 auto;
-  min-width: 300px;
-  max-width: 600px;
+@media (mix-width: 600px) {
+  mat-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 1900px) {
+  mat-card {
+    width: 40%;
+    margin: 0 auto;
+  }
 }
 
 mat-toolbar {
@@ -88,21 +95,21 @@ mat-form-field {
 .weight-icons {
   font-weight: lighter;
 }
-.button-details{
+.button-details {
   background: lightblue;
   border: none;
   cursor: pointer;
 }
 
-#red{
+#red {
   margin-left: 10px;
   font-weight: 500;
-  color: #b34646
+  color: #b34646;
 }
-#peso-fonte{
+#peso-fonte {
   font-weight: 300;
 }
-#peso-fonte-plus{
+#peso-fonte-plus {
   font-size: 30px;
   font-weight: 300;
   color: #fff;

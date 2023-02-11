@@ -29,7 +29,8 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
     private blocosService: BlocosService,
     private router: Router,
     private db: AngularFireDatabase
-  ) {
+  )
+  {
     this.itemsRef = this.db.list('blocos/');
     this.blocosFire$ = this.itemsRef.snapshotChanges().pipe(
       map((changes) =>
@@ -124,4 +125,6 @@ export class BlocosListUserComponent implements OnInit, OnDestroy {
   listFire() {
     this.blocosService.listFire().subscribe((x: any) => (this.blocosFire$ = x));
   }
+
+
 }

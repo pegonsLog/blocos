@@ -1,6 +1,14 @@
-mat-card {
-  width: 40%;
-  margin: 1em auto;
+@media (mix-width: 600px) {
+  mat-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 1900px) {
+  mat-card {
+    width: 40%;
+    margin: 0 auto;
+  }
 }
 
 .full-width {
@@ -19,16 +27,20 @@ button {
 mat-list-item {
   font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-span{
+span {
   font-size: 12px;
 }
-.button-hover{
+.button-hover {
   transition: 0.5;
-  }
-  .button-hover:hover{
-    background-color: #0a10cf;
-  }
+}
+.button-hover:hover {
+  background-color: #0a10cf;
+}
+strong {
+  margin-right: 10px;
+}
+

@@ -24,7 +24,7 @@ export class BlocosListDateRegionalComponent implements OnInit {
   bloco: any;
   subscription: Subscription = new Subscription();
   desfile: any = null;
-  blocosFire$: Observable<Blocos>;
+  blocosFire$: Observable<any[]>;
   itemsRef: AngularFireList<any>;
 
   constructor(
@@ -61,16 +61,22 @@ export class BlocosListDateRegionalComponent implements OnInit {
     //   .subscribe();
   }
 
-  findOne(id: string) {
-    this.router.navigate(['blocos/details', id]);
+  findOne(key: string) {
+    this.router.navigate(['blocos/details', key]);
   }
 
   forByRegional(regional: string) {
-    this.blocosFire$ = this.blocosService.listFireDate(this.data).pipe(
-      map((blocos) =>
-        blocos.filter((bloco: Bloco) => bloco.regional === regional)
+    this.itemsRef = this.db.list('blocos/');
+    this.blocosFire$ = this.itemsRef.snapshotChanges().pipe(
+      map((changes) =>
+        changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
       ),
-      map((result) => result.sort((a, b) => a.nome.localeCompare(b.nome))),
+      map((blocos) =>
+        blocos.filter((bloco: Bloco) => bloco.regional === regional && bloco.data === this.data)
+      ),
+      map((result: any) =>
+        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+      ),
       tap((blocos: Blocos) => (this.contador = blocos.length))
     );
   }

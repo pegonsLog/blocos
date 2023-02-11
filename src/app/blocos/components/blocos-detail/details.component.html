@@ -1,55 +1,52 @@
 <mat-card>
   <mat-toolbar color="primary">Detalhes do bloco</mat-toolbar>
   <mat-card-content>
-    <mat-list>
-      <mat-list-item
-        ><strong> Nome do Bloco: </strong> &nbsp;&nbsp;<span
-          >{{ bloco.nome }}.</span
-        ></mat-list-item
+    <div class="container">
+      <div style="margin-bottom: 15px; margin-top: 20px;"
+        ><strong> Nome do Bloco: </strong
+        ><span>{{ bloco.nome }}.</span></div
       >
-      <mat-list-item
-        ><strong>Data do Desfile: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.data }}.</span></mat-list-item
+      <div style="margin-bottom: 15px"
+        ><strong>Data do Desfile: </strong>
+        <span>{{ bloco.data }}.</span></div
       >
-      <mat-list-item
-        ><strong>Público: </strong> &nbsp;&nbsp;<span
-          >{{ bloco.publico }}.</span
-        ></mat-list-item
+      <div style="margin-bottom: 15px"
+        ><strong>Público: </strong
+        ><span>{{ bloco.publico }}.</span></div
       >
-      <mat-list-item
-        ><strong>Hora da Concentração: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.horaConc }}.</span></mat-list-item
+      <div style="margin-bottom: 15px"
+        ><strong>Hora da Concentração: </strong>
+        <span>{{ bloco.horaConc }}.</span></div
       >
-      <mat-list-item
-        ><strong>Hora do Desfile: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.horaDesf }}.</span></mat-list-item
+      <div style="margin-bottom: 15px"
+        ><strong>Hora do Desfile: </strong>
+        <span>{{ bloco.horaDesf }}.</span></div
       >
-      <mat-list-item
-        ><strong>Hora de Dispersão: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.horaDisp }}.</span></mat-list-item
+      <div style="margin-bottom: 15px"
+        ><strong>Hora de Dispersão: </strong>
+        <span>{{ bloco.horaDisp }}.</span></div
       >
-      <mat-list-item
-        ><strong>Local de Concentração: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.localConc }}.</span></mat-list-item
+      <div style="margin-bottom: 30px"
+        ><strong>Local de Concentração: </strong>
+        <span>{{ bloco.localConc }}.</span></div
       >
-      <mat-list-item
-        ><strong>Trajeto do Desfile: </strong>&nbsp;&nbsp;
-        <span>{{ "PARA CONSULTAR, ABRA O DOT" }}.</span></mat-list-item
+      <div style="margin-bottom: 30px"
+        ><strong>Trajeto do Desfile: </strong>
+        <span>{{ "PARA CONSULTAR, ABRA O DOT" }}.</span></div
       >
-      <mat-list-item
-        ><strong>Local de Dispersão: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.localDisp }}.</span></mat-list-item
+      <div style="margin-bottom: 30px"
+        ><strong>Local de Dispersão: </strong>
+        <span>{{ bloco.localDisp }}.</span></div
       >
-      <mat-list-item
-        ><strong>Responsável: </strong>&nbsp;&nbsp;
-        <span>{{ bloco.responsavel }}.</span></mat-list-item
+      <div style="margin-bottom: 10px"
+        ><strong>Responsável: </strong>
+        <span>{{ bloco.responsavel }}.</span></div
       >
-      <mat-list-item
-        ><strong>Telefone: </strong> &nbsp;&nbsp;<span
-          >{{ bloco.telefone }}.</span
-        ></mat-list-item
+      <div style="margin-bottom: 10px"
+        ><strong>Telefone: </strong
+        ><span>{{ bloco.telefone }}.</span></div
       >
-    </mat-list>
+    </div>
     <mat-card-actions>
       <button class="button-hover montserrat" mat-raised-button color="primary">
         <a href="{{ bloco.linkMyMaps }}" target="_blank"> Abrir MyMaps</a>
