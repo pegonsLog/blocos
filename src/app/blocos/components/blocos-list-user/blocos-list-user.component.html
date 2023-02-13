@@ -28,7 +28,9 @@
         POR DATA
       </button>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" id="teste">
+  </mat-grid-list>
+  <mat-grid-list class="informacoes" cols="4" rowHeight="5:2">
+    <mat-grid-tile [colspan]="2" id="teste">
       <span class="montserrat"
         >REG:<span id="red">{{ regional }}</span></span
       >
@@ -37,6 +39,9 @@
       <span class="montserrat"
         >QTE: <span id="red">{{ contador }}</span></span
       >
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" id="teste">
+      <button id="desvio" mat-button>DESVIOS</button>
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -72,7 +77,7 @@
 
   <div class="container">
     <div *ngIf="blocosFire$ | async; else loading">
-    <div *ngFor="let bloco of blocosFire$ | async as Blocos">
+      <div *ngFor="let bloco of blocosFire$ | async as Blocos">
         <div class="link">
           <div>
             <a class="montserrat" href="{{ bloco.linkMyMaps }}" target="_blank">
