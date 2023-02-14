@@ -31,7 +31,7 @@ export class LoginComponent {
       this.router.navigate(['desvios/list']);
     }
     if (this.userAuth === 'form') {
-      this.router.navigate(['desvios/adm']);
+      this.router.navigate(['desvios/form']);
     }
     if (this.userAuth === '') {
       this.onError();

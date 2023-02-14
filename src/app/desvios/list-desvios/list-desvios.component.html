@@ -35,7 +35,7 @@
 
   <div class="container">
     <div *ngIf="desviosFire$ | async; else loading">
-      <div *ngFor="let desvio of desviosFire$ | async as Blocos">
+      <div *ngFor="let desvio of desviosFire$ | async as Desvios">
         <div class="link">
           <div>
             <a class="montserrat" href="{{ desvio.link }}" target="_blank">

@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "blocos",
-    "public": "dist/blocos",
+    "public": "dist/desvios",
     "ignore": [
       "**/.*"
     ],

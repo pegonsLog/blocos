@@ -34,7 +34,7 @@ export class ListDesviosComponent implements OnInit {
         changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
       ),
       map((result: any) =>
-        result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+        result.sort((a: any, b: any) => a.linha.localeCompare(b.linha))
       )
     );
 
@@ -49,7 +49,7 @@ export class ListDesviosComponent implements OnInit {
       .listFire()
       .pipe(
         map((result) =>
-          result.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
+          result.sort((a: any, b: any) => a.linha.localeCompare(b.linha))
         )
       );
     this.desviosFire$.subscribe(

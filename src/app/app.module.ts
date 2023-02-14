@@ -19,6 +19,7 @@ import { LoginModule } from './login/login.module';
 import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -35,6 +36,7 @@ import { SharedModule } from './shared/shared.module';
     AngularFireModule.initializeApp(environment.firebase),
     provideDatabase(() => getDatabase()),
     provideAuth(() => getAuth()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
 
   ],
   providers: [ScreenTrackingService, UserTrackingService],
