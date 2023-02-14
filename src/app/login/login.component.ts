@@ -28,10 +28,10 @@ export class LoginComponent {
   onSubmit() {
     this.userAuth = this.loginService.userAuth(this.form.value);
     if (this.userAuth === 'user') {
-      this.router.navigate(['blocos/user']);
+      this.router.navigate(['desvios/list']);
     }
-    if (this.userAuth === 'adm') {
-      this.router.navigate(['blocos/adm']);
+    if (this.userAuth === 'form') {
+      this.router.navigate(['desvios/adm']);
     }
     if (this.userAuth === '') {
       this.onError();

@@ -37,6 +37,9 @@ export class DesviosService {
     return this.db.object<Desvio>('desvios/' + key).valueChanges();
   }
 
+  add(key: Partial<Desvio>) {
+
+  }
   delete(key: string) {
     return this.db.object(`desvios/${key}`).remove();
   }

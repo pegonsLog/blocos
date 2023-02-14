@@ -131,8 +131,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "blocos:build:production",
-            "firebaseProject": "carnaval-2023-bhtrans",
-            "firebaseHostingSite": "carnaval-2023-bhtrans"
+            "firebaseProject": "desvioscarnaval-2023-bhtrans",
+            "firebaseHostingSite": "desvioscarnaval-2023-bhtrans"
           }
         }
       }

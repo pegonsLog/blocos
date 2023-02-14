@@ -6,13 +6,6 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
 
   {
-    path: 'blocos',
-    loadChildren: () =>
-      import('src/app/blocos/components/blocos.module').then(
-        (m) => m.BlocosModule
-      ),
-  },
-  {
     path: 'desvios',
     loadChildren: () =>
       import('src/app/desvios/desvios.module').then((m) => m.DesviosModule),
