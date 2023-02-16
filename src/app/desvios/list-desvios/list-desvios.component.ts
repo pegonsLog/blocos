@@ -14,6 +14,7 @@ import { DesviosService } from '../desvios.service';
   styleUrls: ['./list-desvios.component.scss'],
 })
 export class ListDesviosComponent implements OnInit {
+
   desviosFire$: Observable<any[]>;
   queryField = new FormControl();
   value: string = '';
@@ -97,4 +98,8 @@ export class ListDesviosComponent implements OnInit {
       .listFire()
       .subscribe((x: any) => (this.desviosFire$ = x));
   }
+
+  blocos() {
+    window.open('https://carnaval-2023-bhtrans.web.app/', '_blank');
+    }
 }

@@ -39,7 +39,8 @@
   }
 }
 
-a {
+.linha {
+  display: block;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 15px;
@@ -59,6 +60,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 1rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 mat-label {
@@ -85,12 +89,11 @@ button {
 }
 
 .container {
-  height: 300px;
+  height: 500px;
   overflow: auto;
 }
 
 .pesquisar {
-  margin-top: 0.5em;
   margin-bottom: 0.5em;
   font-size: 0.75rem;
 }
@@ -98,7 +101,7 @@ button {
 mat-form-field {
   padding-top: 15px;
   margin-top: 5px;
-  width: 90%;
+  width: 100%;
 }
 
 .montserrat {
@@ -171,7 +174,7 @@ mat-toolbar {
 }
 
 #loading-spinner {
-  height: 300px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,4 +184,8 @@ mat-toolbar {
   font-weight: 500;
   color: #0306ba;
   background-color: lightblue;
+}
+
+#blocos{
+  color: #b34646;
 }
